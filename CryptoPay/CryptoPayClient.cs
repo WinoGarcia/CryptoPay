@@ -30,10 +30,10 @@ public sealed class CryptoPayClient : ICryptoPayClient
         HttpClient httpClient = null,
         string apiUrl = default)
     {
-        this.token = string.IsNullOrEmpty(token) 
+        this.token = string.IsNullOrEmpty(token)
             ? throw new ArgumentNullException(nameof(token))
             : token;
-        
+
         this.httpClient = httpClient ?? new HttpClient();
         this.cryptoBotApiUrl = apiUrl ?? DefaultCryptoBotApiUrl;
         this.AppId = GetApplicationId(this.token);
@@ -104,16 +104,17 @@ public sealed class CryptoPayClient : ICryptoPayClient
         if (httpResponse.StatusCode != HttpStatusCode.OK)
         {
             await httpResponse
-                .DeserializeContentAsync<ApiResponseWithError>(
-                    response => response.Ok == false)
+                .DeserializeContentAsync<ApiResponseWithError>(response =>
+                        response.Ok == false,
+                    cancellationToken)
                 .ConfigureAwait(false);
         }
 
         var apiResponse = await httpResponse
-            .DeserializeContentAsync<ApiResponse<TResponse>>(
-                response => response.Ok == false ||
-                            response.Result is null
-            )
+            .DeserializeContentAsync<ApiResponse<TResponse>>(response =>
+                    response.Ok == false ||
+                    response.Result is null,
+                cancellationToken)
             .ConfigureAwait(false);
 
         return apiResponse.Result!;

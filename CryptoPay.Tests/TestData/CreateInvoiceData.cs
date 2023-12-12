@@ -14,7 +14,7 @@ public class CreateInvoiceData : TheoryData<HttpStatusCode, Error?, CreateInvoic
             default,
             new CreateInvoiceRequest(
                 Assets.TON,
-                0.105,
+                5.105,
                 "description",
                 "hiddenMessage",
                 PaidButtonNames.callback,

@@ -1,15 +1,12 @@
-﻿using CryptoPay.Requests.Base;
+﻿using System.Text.Json.Serialization;
+using CryptoPay.Requests.Base;
 using CryptoPay.Types;
-using Newtonsoft.Json;
-using Newtonsoft.Json.Converters;
-using Newtonsoft.Json.Serialization;
 
 namespace CryptoPay.Requests;
 
 /// <summary>
 ///     Use this class to get <see cref="Transfer"/> request.
 /// </summary>
-[JsonObject(MemberSerialization.OptIn, NamingStrategyType = typeof(SnakeCaseNamingStrategy))]
 public sealed class TransferRequest
     : ParameterlessRequest<Transfer>,
         ITransfer
@@ -47,8 +44,6 @@ public sealed class TransferRequest
     /// <summary>
     ///     One of the <see cref="TransferStatuses"/>
     /// </summary>
-    [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore)]
-    [JsonConverter(typeof(StringEnumConverter))]
     public TransferStatuses? Status { get; set; }
 
     /// <summary>
@@ -58,30 +53,27 @@ public sealed class TransferRequest
     ///     status, etc).
     ///     It can be some unique withdrawal identifier for example. Up to 64 symbols.
     /// </summary>
-    [JsonProperty(Required = Required.Always)]
+    [JsonRequired]
     public string SpendId { get; set; }
 
     /// <summary>
     ///     Optional. Pass true if the user should not receive a notification about the transfer.
     ///     Default is false.
     /// </summary>
-    [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore)]
     public bool? DisableSendNotification { get; set; }
 
     /// <inheritdoc />
-    [JsonProperty(Required = Required.Always)]
+    [JsonRequired]
     public long UserId { get; set; }
 
     /// <inheritdoc />
-    [JsonProperty(Required = Required.Always)]
-    [JsonConverter(typeof(StringEnumConverter))]
+    [JsonRequired]
     public Assets Asset { get; set; }
 
     /// <inheritdoc />
-    [JsonProperty(Required = Required.Always)]
+    [JsonRequired]
     public double Amount { get; set; }
 
     /// <inheritdoc />
-    [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore)]
     public string Comment { get; set; }
 }

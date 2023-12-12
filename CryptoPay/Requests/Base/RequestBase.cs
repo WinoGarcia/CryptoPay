@@ -1,6 +1,7 @@
 ﻿using System.Net.Http;
 using System.Text;
-using Newtonsoft.Json;
+using System.Text.Json;
+using System.Text.Json.Serialization;
 
 namespace CryptoPay.Requests.Base;
 
@@ -10,9 +11,16 @@ public class RequestBase<TResponse> : IRequest<TResponse>
     #region Public Methods
 
     /// <inheritdoc />
-    public virtual HttpContent ToHttpContent()
+    public HttpContent ToHttpContent()
     {
-        var payload = JsonConvert.SerializeObject(this);
+        var options = new JsonSerializerOptions()
+        {
+            PropertyNamingPolicy = JsonNamingPolicy.SnakeCaseLower,
+            DefaultIgnoreCondition = JsonIgnoreCondition.WhenWritingNull,
+            NumberHandling = JsonNumberHandling.AllowReadingFromString | JsonNumberHandling.WriteAsString
+        };
+
+        var payload = JsonSerializer.Serialize(this, this.GetType(), options);
         return new StringContent(payload, Encoding.UTF8, "application/json");
     }
 

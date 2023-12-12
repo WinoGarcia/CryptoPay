@@ -21,12 +21,10 @@ public static class CryptoPayExtensions
     /// <returns>Returns basic information about the bot in form of a <see cref="CryptoPayApplication" /> object.</returns>
     public static async Task<CryptoPayApplication> GetMeAsync(
         this CryptoPayClient cryptoPayClientClient,
-        CancellationToken cancellationToken = default)
-    {
-        return await cryptoPayClientClient
+        CancellationToken cancellationToken = default) =>
+        await cryptoPayClientClient
             .MakeRequestAsync(new GetMeRequest(), cancellationToken)
             .ConfigureAwait(false);
-    }
 
     /// <summary>
     ///     Use this method to create a new invoice. On success, returns an object of the created <see cref="Invoice" />.
@@ -60,9 +58,8 @@ public static class CryptoPayExtensions
         bool allowComments = true,
         bool allowAnonymous = true,
         long expiresIn = default,
-        CancellationToken cancellationToken = default)
-    {
-        return await cryptoPayClientClient
+        CancellationToken cancellationToken = default) =>
+        await cryptoPayClientClient
             .MakeRequestAsync(new CreateInvoiceRequest(
                     asset,
                     amount,
@@ -76,7 +73,6 @@ public static class CryptoPayExtensions
                     expiresIn),
                 cancellationToken)
             .ConfigureAwait(false);
-    }
 
     /// <summary>
     ///     Use this method to get a balance of your app. Returns array of <see cref="Balance" />.
@@ -87,12 +83,10 @@ public static class CryptoPayExtensions
     /// <exception cref="RequestException">This exception can be thrown.</exception>
     public static async Task<List<Balance>> GetBalanceAsync(
         this CryptoPayClient cryptoPayClientClient,
-        CancellationToken cancellationToken = default)
-    {
-        return await cryptoPayClientClient
+        CancellationToken cancellationToken = default) =>
+        await cryptoPayClientClient
             .MakeRequestAsync(new GetBalanceRequest(), cancellationToken)
             .ConfigureAwait(false);
-    }
 
     /// <summary>
     ///     Use this method to get exchange rates of supported currencies. Returns array of <see cref="ExchangeRate" />>
@@ -103,12 +97,10 @@ public static class CryptoPayExtensions
     /// <exception cref="RequestException">This exception can be thrown.</exception>
     public static async Task<List<ExchangeRate>> GetExchangeRatesAsync(
         this CryptoPayClient cryptoPayClientClient,
-        CancellationToken cancellationToken = default)
-    {
-        return await cryptoPayClientClient
+        CancellationToken cancellationToken = default) =>
+        await cryptoPayClientClient
             .MakeRequestAsync(new GetExchangeRatesRequest(), cancellationToken)
             .ConfigureAwait(false);
-    }
 
     /// <summary>
     ///     Use this method to get a list of supported currencies. Returns array of <see cref="Currency" />
@@ -119,12 +111,10 @@ public static class CryptoPayExtensions
     /// <exception cref="RequestException">This exception can be thrown.</exception>
     public static async Task<List<Currency>> GetCurrenciesAsync(
         this CryptoPayClient cryptoPayClientClient,
-        CancellationToken cancellationToken = default)
-    {
-        return await cryptoPayClientClient
+        CancellationToken cancellationToken = default) =>
+        await cryptoPayClientClient
             .MakeRequestAsync(new GetCurrenciesRequest(), cancellationToken)
             .ConfigureAwait(false);
-    }
 
     /// <summary>
     ///     Use this method to send coins from your app's balance to a user. On success, returns object of completed <see cref="Transfer" />.
@@ -151,9 +141,8 @@ public static class CryptoPayExtensions
         string spendId,
         string comment = default,
         bool? disableSendNotification = default,
-        CancellationToken cancellationToken = default)
-    {
-        return await cryptoPayClientClient
+        CancellationToken cancellationToken = default) =>
+        await cryptoPayClientClient
             .MakeRequestAsync(new TransferRequest(
                     userId,
                     asset,
@@ -163,7 +152,6 @@ public static class CryptoPayExtensions
                     disableSendNotification),
                 cancellationToken)
             .ConfigureAwait(false);
-    }
 
     /// <summary>
     ///     Use this method to get invoices of your app. On success, returns array of <see cref="Invoice" />.
@@ -184,9 +172,8 @@ public static class CryptoPayExtensions
         Statuses? status = default,
         int offset = 0,
         int count = 100,
-        CancellationToken cancellationToken = default)
-    {
-        return await cryptoPayClientClient
+        CancellationToken cancellationToken = default) =>
+        await cryptoPayClientClient
             .MakeRequestAsync(new GetInvoicesRequest(
                     assets.Join(","),
                     invoiceIds.Join(","),
@@ -195,5 +182,4 @@ public static class CryptoPayExtensions
                     count),
                 cancellationToken)
             .ConfigureAwait(false);
-    }
 }

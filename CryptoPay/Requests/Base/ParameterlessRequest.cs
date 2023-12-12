@@ -1,7 +1,5 @@
 ﻿using System.Net.Http;
 using CryptoPay.Types;
-using Newtonsoft.Json;
-using Newtonsoft.Json.Serialization;
 
 namespace CryptoPay.Requests.Base;
 
@@ -9,7 +7,6 @@ namespace CryptoPay.Requests.Base;
 ///     Represents a request that doesn't require any parameters.
 /// </summary>
 /// <typeparam name="TResult">Type of response. For example <see cref="Invoice"/></typeparam>
-[JsonObject(MemberSerialization.OptIn, NamingStrategyType = typeof(SnakeCaseNamingStrategy))]
 public class ParameterlessRequest<TResult> : RequestBase<TResult>
 {
     #region Constructors

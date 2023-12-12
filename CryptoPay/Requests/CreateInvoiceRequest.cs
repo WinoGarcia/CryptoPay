@@ -1,18 +1,15 @@
-﻿using CryptoPay.Requests.Base;
+﻿using System.Text.Json.Serialization;
+using CryptoPay.Requests.Base;
 using CryptoPay.Types;
-using Newtonsoft.Json;
-using Newtonsoft.Json.Converters;
-using Newtonsoft.Json.Serialization;
 
 namespace CryptoPay.Requests;
 
 /// <summary>
 ///     Use this class to create <see cref="Invoice"/> request.
 /// </summary>
-[JsonObject(MemberSerialization.OptIn, NamingStrategyType = typeof(SnakeCaseNamingStrategy))]
 public sealed class CreateInvoiceRequest
-    : ParameterlessRequest<Invoice>, 
-      IInvoice
+    : ParameterlessRequest<Invoice>,
+        IInvoice
 {
     #region Constructors
 
@@ -62,49 +59,39 @@ public sealed class CreateInvoiceRequest
     #region Public Fields
 
     /// <inheritdoc />
-    [JsonProperty(Required = Required.Always)]
-    [JsonConverter(typeof(StringEnumConverter))]
+    [JsonRequired]
     public Assets Asset { get; set; }
 
     /// <inheritdoc />
-    [JsonProperty(Required = Required.Always)]
+    [JsonRequired]
     public double Amount { get; set; }
 
     /// <inheritdoc />
-    [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore)]
     public string Description { get; set; }
 
     /// <inheritdoc />
-    [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore)]
     public string HiddenMessage { get; set; }
 
     /// <inheritdoc />
-    [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore)]
-    [JsonConverter(typeof(StringEnumConverter))]
     public PaidButtonNames? PaidBtnName { get; set; }
 
     /// <inheritdoc />
-    [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore)]
     public string PaidBtnUrl { get; set; }
 
     /// <inheritdoc />
-    [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore)]
     public string Payload { get; set; }
 
     /// <inheritdoc />
-    [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore)]
     public bool? AllowComments { get; set; }
 
     /// <summary>
     ///     Optional. Allow a user to pay the invoice anonymously. Default is true.
     /// </summary>
-    [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore)]
     public bool? AllowAnonymous { get; set; }
 
     /// <summary>
     ///     Optional. You can set a payment time limit for the invoice in seconds. Values between 1-2678400 are accepted.
     /// </summary>
-    [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore)]
     public long ExpiresIn { get; set; }
 
     #endregion

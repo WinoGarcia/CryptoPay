@@ -1,47 +1,42 @@
 ﻿using System;
-using Newtonsoft.Json;
-using Newtonsoft.Json.Converters;
-using Newtonsoft.Json.Serialization;
+using System.Text.Json.Serialization;
 
 namespace CryptoPay.Types;
 
 /// <inheritdoc />
-[JsonObject(MemberSerialization.OptIn, NamingStrategyType = typeof(SnakeCaseNamingStrategy))]
 public sealed class Transfer : ITransfer
 {
     /// <summary>
     ///     Unique ID for this transfer.
     /// </summary>
-    [JsonProperty(Required = Required.Always)]
+    [JsonRequired]
     public long TransferId { get; set; }
 
     /// <inheritdoc/>
-    [JsonProperty(Required = Required.Always)]
+    [JsonRequired]
     public long UserId { get; set; }
 
     /// <inheritdoc/>
-    [JsonProperty(Required = Required.Always)]
-    [JsonConverter(typeof(StringEnumConverter))]
+    [JsonRequired]
     public Assets Asset { get; set; }
 
     /// <inheritdoc/>
-    [JsonProperty(Required = Required.Always)]
+    [JsonRequired]
     public double Amount { get; set; }
 
     /// <summary>
     /// Status of the transfer, can be “completed”.
     /// </summary>
-    [JsonProperty(Required = Required.Always)]
-    [JsonConverter(typeof(StringEnumConverter))]
+    [JsonRequired]
     public TransferStatuses Status { get; set; }
 
     /// <summary>
     /// Date the transfer was completed in ISO 8601 format.
     /// </summary>
-    [JsonProperty(Required = Required.Always)]
+    [JsonRequired]
     public DateTime CompletedAt { get; set; }
 
     /// <inheritdoc/>
-    [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore)]
+
     public string Comment { get; set; }
 }

@@ -1,13 +1,11 @@
-﻿using CryptoPay.Types;
-using Newtonsoft.Json;
-using Newtonsoft.Json.Serialization;
+﻿using System.Text.Json.Serialization;
+using CryptoPay.Types;
 
 namespace CryptoPay.Responses;
 
 /// <summary>
 ///     Response with <see cref="Error"/>.
 /// </summary>
-[JsonObject(MemberSerialization.OptIn, NamingStrategyType = typeof(SnakeCaseNamingStrategy))]
 internal sealed class ApiResponseWithError : IResponse
 {
     /// <summary>
@@ -17,19 +15,19 @@ internal sealed class ApiResponseWithError : IResponse
     public ApiResponseWithError(Error error)
     {
         this.Ok = false;
-        this.Error = Error;
+        this.Error = error;
     }
 
     [JsonConstructor]
     private ApiResponseWithError() {}
 
     /// <inheritdoc cref="IResponse.Ok"/>
-    [JsonProperty(Required = Required.Always)]
+    [JsonRequired]
     public bool Ok { get; init; }
-    
+
     /// <summary>
     ///     Instance of <see cref="Error"/>.
     /// </summary>
-    [JsonProperty(Required = Required.Always)]
-    public Error Error { get; init; } 
+    [JsonRequired]
+    public Error Error { get; init; }
 }

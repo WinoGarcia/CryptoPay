@@ -23,6 +23,7 @@ public static class EnumerableExtensions
             sb.AppendJoin(delimiter, self);
             return sb.ToString();
         }
+
         return default;
     }
 }

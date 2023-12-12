@@ -1,12 +1,10 @@
-﻿using Newtonsoft.Json;
-using Newtonsoft.Json.Serialization;
+﻿using System.Text.Json.Serialization;
 
 namespace CryptoPay.Types;
 
 /// <summary>
 ///     Error from response.
 /// </summary>
-[JsonObject(MemberSerialization.OptIn, NamingStrategyType = typeof(SnakeCaseNamingStrategy))]
 public sealed class Error
 {
     /// <summary>
@@ -19,19 +17,19 @@ public sealed class Error
         this.Code = code;
         this.Name = name;
     }
-    
+
     [JsonConstructor]
     private Error() {}
 
     /// <summary>
     ///     Error code from response.
     /// </summary>
-    [JsonProperty(Required = Required.Always)]
+    [JsonRequired]
     public int Code { get; set; }
 
     /// <summary>
     ///     Error name from response.
     /// </summary>
-    [JsonProperty(Required = Required.Always)]
+    [JsonRequired]
     public string Name { get; set; }
 }

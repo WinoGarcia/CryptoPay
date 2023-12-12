@@ -45,12 +45,16 @@ public class AvailableMethodsTests
 
     [Theory]
     [ClassData(typeof(CryptoPayClientData))]
-    public async Task AuthorizationAndGetMeTest(HttpStatusCode statusCode, Error error, string token, string apiUrl)
+    public async Task AuthorizationAndGetMeTest(
+        HttpStatusCode statusCode,
+        Error error,
+        string token,
+        string apiUrl)
     {
         try
         {
             var cryptoPayClient = new CryptoPayClient(token, apiUrl: apiUrl);
-            var application = await cryptoPayClient.GetMeAsync(cancellationToken);
+            var application = await cryptoPayClient.GetMeAsync(this.cancellationToken);
 
             Assert.NotNull(application);
             Assert.NotEmpty(application.Name);
@@ -63,7 +67,7 @@ public class AvailableMethodsTests
         }
         catch (RequestException requestException)
         {
-            AssertException(requestException, statusCode, error);
+            this.AssertException(requestException, statusCode, error);
         }
     }
 
@@ -84,8 +88,7 @@ public class AvailableMethodsTests
                 invoiceRequest.Payload,
                 invoiceRequest.AllowComments!.Value,
                 invoiceRequest.AllowAnonymous!.Value,
-                invoiceRequest.ExpiresIn,
-                cancellationToken);
+                invoiceRequest.ExpiresIn, this.cancellationToken);
 
             Assert.NotNull(invoice);
             Assert.NotNull(invoice.PayUrl);
@@ -103,7 +106,7 @@ public class AvailableMethodsTests
         }
         catch (RequestException requestException)
         {
-            AssertException(requestException, statusCode, error);
+            this.AssertException(requestException, statusCode, error);
         }
     }
 
@@ -111,7 +114,7 @@ public class AvailableMethodsTests
     public async Task GetBalanceTest()
     {
         var cryptoPayClient = new CryptoPayClient(CryptoPayTestHelper.Token, apiUrl: CryptoPayTestHelper.ApiUrl);
-        var balance = await cryptoPayClient.GetBalanceAsync(cancellationToken);
+        var balance = await cryptoPayClient.GetBalanceAsync(this.cancellationToken);
 
         Assert.NotNull(balance);
         Assert.True(balance.Any());
@@ -121,7 +124,7 @@ public class AvailableMethodsTests
     public async Task GetExchangeRatesTest()
     {
         var cryptoPayClient = new CryptoPayClient(CryptoPayTestHelper.Token, apiUrl: CryptoPayTestHelper.ApiUrl);
-        var exchangeRates = await cryptoPayClient.GetExchangeRatesAsync(cancellationToken);
+        var exchangeRates = await cryptoPayClient.GetExchangeRatesAsync(this.cancellationToken);
 
         Assert.NotNull(exchangeRates);
         Assert.True(exchangeRates.Any());
@@ -131,7 +134,7 @@ public class AvailableMethodsTests
     public async Task GetCurrenciesTest()
     {
         var cryptoPayClient = new CryptoPayClient(CryptoPayTestHelper.Token, apiUrl: CryptoPayTestHelper.ApiUrl);
-        var currencies = await cryptoPayClient.GetCurrenciesAsync(cancellationToken);
+        var currencies = await cryptoPayClient.GetCurrenciesAsync(this.cancellationToken);
 
         Assert.NotNull(currencies);
         Assert.True(currencies.Any());
@@ -153,8 +156,7 @@ public class AvailableMethodsTests
                 transferRequest.Amount,
                 transferRequest.SpendId,
                 transferRequest.Comment,
-                transferRequest.DisableSendNotification,
-                cancellationToken);
+                transferRequest.DisableSendNotification, this.cancellationToken);
 
             Assert.NotNull(transfer);
             Assert.Equal(transferRequest.UserId, transfer.UserId);
@@ -165,7 +167,7 @@ public class AvailableMethodsTests
         }
         catch (RequestException requestException)
         {
-            AssertException(requestException, statusCode, error);
+            this.AssertException(requestException, statusCode, error);
         }
     }
 
@@ -188,15 +190,13 @@ public class AvailableMethodsTests
                 invoiceIds,
                 status,
                 offset,
-                count,
-                cancellationToken);
+                count, this.cancellationToken);
 
             Assert.NotNull(transfer);
-
         }
         catch (RequestException requestException)
         {
-            AssertException(requestException, statusCode, error);
+            this.AssertException(requestException, statusCode, error);
         }
     }
 

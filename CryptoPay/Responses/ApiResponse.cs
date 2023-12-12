@@ -1,6 +1,4 @@
-﻿using System.Diagnostics.CodeAnalysis;
-using Newtonsoft.Json;
-using Newtonsoft.Json.Serialization;
+﻿using System.Text.Json.Serialization;
 
 namespace CryptoPay.Responses;
 
@@ -8,7 +6,6 @@ namespace CryptoPay.Responses;
 ///     Represents bot API response
 /// </summary>
 /// <typeparam name="TResult">Expected type of operation result</typeparam>
-[JsonObject(MemberSerialization.OptIn, NamingStrategyType = typeof(SnakeCaseNamingStrategy))]
 internal sealed class ApiResponse<TResult> : IResponse<TResult>
 {
     /// <summary>
@@ -28,12 +25,8 @@ internal sealed class ApiResponse<TResult> : IResponse<TResult>
     private ApiResponse() {}
 
     /// <inheritdoc />
-    [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore)]
     public bool Ok { get; init; }
 
     /// <inheritdoc />
-    [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore)]
-    [MaybeNull]
-    [AllowNull]
     public TResult Result { get; init; }
 }

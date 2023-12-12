@@ -2,11 +2,13 @@
 using System.IO;
 using System.Net.Http;
 using System.Runtime.CompilerServices;
+using System.Text.Json;
+using System.Text.Json.Serialization;
+using System.Threading;
 using System.Threading.Tasks;
 using CryptoPay.Exceptions;
 using CryptoPay.Responses;
 using CryptoPay.Types;
-using Newtonsoft.Json;
 
 namespace CryptoPay.Extensions;
 
@@ -15,7 +17,7 @@ namespace CryptoPay.Extensions;
 /// </summary>
 public static class HttpResponseMessageExtensions
 {
-    private static T DeserializeJsonFromStream<T>(this Stream stream)
+    private static async Task<T> DeserializeJsonFromStreamAsync<T>(this Stream stream, CancellationToken cancellationToken)
         where T : class
     {
         if (stream is null || !stream.CanRead)
@@ -23,13 +25,14 @@ public static class HttpResponseMessageExtensions
             return default;
         }
 
-        using var streamReader = new StreamReader(stream);
-        using var jsonTextReader = new JsonTextReader(streamReader);
+        var options = new JsonSerializerOptions()
+        {
+            PropertyNamingPolicy = JsonNamingPolicy.SnakeCaseLower,
+            DefaultIgnoreCondition = JsonIgnoreCondition.WhenWritingNull,
+            NumberHandling = JsonNumberHandling.AllowReadingFromString | JsonNumberHandling.WriteAsString
+        };
 
-        var jsonSerializer = JsonSerializer.CreateDefault();
-        var searchResult = jsonSerializer.Deserialize<T>(jsonTextReader);
-
-        return searchResult;
+        return await JsonSerializer.DeserializeAsync<T>(stream, options, cancellationToken);
     }
 
     /// <summary>
@@ -37,6 +40,7 @@ public static class HttpResponseMessageExtensions
     /// </summary>
     /// <param name="httpResponse"><see cref="HttpResponseMessage" /> instance.</param>
     /// <param name="guard"></param>
+    /// <param name="cancellationToken"></param>
     /// <typeparam name="T">Type of the resulting object.</typeparam>
     /// <returns></returns>
     /// <exception cref="RequestException">
@@ -45,7 +49,8 @@ public static class HttpResponseMessageExtensions
     [MethodImpl(MethodImplOptions.AggressiveInlining)]
     internal static async Task<T> DeserializeContentAsync<T>(
         this HttpResponseMessage httpResponse,
-        Func<T, bool> guard)
+        Func<T, bool> guard,
+        CancellationToken cancellationToken)
         where T : class
     {
         Stream contentStream = null;
@@ -62,38 +67,34 @@ public static class HttpResponseMessageExtensions
         try
         {
             T deserializedObject;
-
             try
             {
                 contentStream = await httpResponse.Content
-                    .ReadAsStreamAsync()
+                    .ReadAsStreamAsync(cancellationToken)
                     .ConfigureAwait(false);
 
-                deserializedObject = contentStream
-                    .DeserializeJsonFromStream<T>();
+                deserializedObject = await contentStream
+                    .DeserializeJsonFromStreamAsync<T>(cancellationToken);
             }
             catch (Exception exception)
             {
                 throw CreateRequestException(
                     httpResponse,
-                    exception: exception
-                );
+                    exception: exception);
             }
 
             if (deserializedObject is null)
             {
                 throw CreateRequestException(
                     httpResponse,
-                    message: "Required properties not found in response"
-                );
+                    message: "Required properties not found in response");
             }
 
             if (guard(deserializedObject))
             {
                 throw CreateRequestException(
                     httpResponse,
-                    (deserializedObject as ApiResponseWithError)?.Error
-                );
+                    (deserializedObject as ApiResponseWithError)?.Error);
             }
 
             return deserializedObject;
@@ -102,7 +103,9 @@ public static class HttpResponseMessageExtensions
         {
             if (contentStream is not null)
             {
-                await contentStream.DisposeAsync().ConfigureAwait(false);
+                await contentStream
+                    .DisposeAsync()
+                    .ConfigureAwait(false);
             }
         }
     }
@@ -113,9 +116,8 @@ public static class HttpResponseMessageExtensions
         Error error = default,
         string message = default,
         Exception exception = default
-    )
-    {
-        return exception is null
+    ) =>
+        exception is null
             ? new RequestException(
                 message,
                 error,
@@ -126,5 +128,4 @@ public static class HttpResponseMessageExtensions
                 httpResponse.StatusCode,
                 exception
             );
-    }
 }

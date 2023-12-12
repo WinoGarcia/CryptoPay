@@ -1,4 +1,6 @@
-﻿#pragma warning disable CS1591
+﻿using System.Text.Json.Serialization;
+
+#pragma warning disable CS1591
 namespace CryptoPay.Types;
 
 // ReSharper disable InconsistentNaming
@@ -6,6 +8,7 @@ namespace CryptoPay.Types;
 /// <summary>
 ///     Available currencies.
 /// </summary>
+[JsonConverter(typeof(JsonStringEnumConverter))]
 public enum Assets
 {
     // Crypto
@@ -18,6 +21,7 @@ public enum Assets
     BUSD,
     TRX,
     LTC,
+    JET,
 
     //Fiat
     RUB = 100, // Russian ruble
@@ -39,5 +43,5 @@ public enum Assets
     AZN = 116, // Azerbaijani manat
     AED = 117, // United Arab Emirates dirham
     PLN = 118, // Polish złoty
-    ILS = 119, // Israeli new shekel
+    ILS = 119 // Israeli new shekel
 }

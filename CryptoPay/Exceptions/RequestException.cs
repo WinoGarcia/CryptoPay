@@ -57,7 +57,7 @@ public sealed class RequestException : Exception
     ///     <see cref="HttpStatusCode" /> of the received response.
     /// </summary>
     public HttpStatusCode? HttpStatusCode { get; }
-    
+
     /// <summary>
     ///     Error from response.
     /// </summary>
@@ -70,7 +70,7 @@ public sealed class RequestException : Exception
         {
             return message;
         }
-        
+
         var errorMessage = $"Code: {error.Code} Name: {error.Name}";
         return message is null
             ? errorMessage
