@@ -16,13 +16,13 @@ public class AvailableMethodsTests
 {
     #region Public Fields
 
-    private readonly CancellationToken cancellationToken = CancellationToken.None;
+    private readonly CancellationToken cancellationToken = new CancellationTokenSource().Token;
 
     #endregion
 
     #region Private Methods
 
-    private void AssertException(RequestException requestException, HttpStatusCode statusCode, Error error)
+    private static void AssertException(RequestException requestException, HttpStatusCode statusCode, Error error)
     {
         Assert.NotNull(requestException);
         Assert.Equal(statusCode, requestException.HttpStatusCode);
@@ -67,7 +67,7 @@ public class AvailableMethodsTests
         }
         catch (RequestException requestException)
         {
-            this.AssertException(requestException, statusCode, error);
+            AssertException(requestException, statusCode, error);
         }
     }
 
@@ -106,7 +106,7 @@ public class AvailableMethodsTests
         }
         catch (RequestException requestException)
         {
-            this.AssertException(requestException, statusCode, error);
+            AssertException(requestException, statusCode, error);
         }
     }
 
@@ -167,7 +167,7 @@ public class AvailableMethodsTests
         }
         catch (RequestException requestException)
         {
-            this.AssertException(requestException, statusCode, error);
+            AssertException(requestException, statusCode, error);
         }
     }
 
@@ -196,7 +196,7 @@ public class AvailableMethodsTests
         }
         catch (RequestException requestException)
         {
-            this.AssertException(requestException, statusCode, error);
+            AssertException(requestException, statusCode, error);
         }
     }
 

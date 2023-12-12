@@ -3,7 +3,7 @@
 public static class CryptoPayTestHelper
 {
     /// <summary>
-    ///     Your real application token.
+    ///     Your test application token.
     /// </summary>
     public static string Token = "";
 
