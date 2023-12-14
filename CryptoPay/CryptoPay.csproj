@@ -3,10 +3,10 @@
     <PropertyGroup>
         <LangVersion>12</LangVersion>
         <Nullable>disable</Nullable>
-        <AssemblyVersion>1.1.3.6</AssemblyVersion>
-        <FileVersion>1.1.3.6</FileVersion>
-        <PackageVersion>1.1.3.6</PackageVersion>
-        <Title></Title>
+        <AssemblyVersion>1.1.3.7</AssemblyVersion>
+        <FileVersion>1.1.3.7</FileVersion>
+        <PackageVersion>1.1.3.7</PackageVersion>
+        <Title>Crypto Pay Client</Title>
         <Authors>Alexander Shitov</Authors>
         <Description>Cryptocurrency payment system based on @cryptobot in Telegram</Description>
         <PackageLicenseUrl></PackageLicenseUrl>
@@ -18,22 +18,23 @@
         <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
         <Copyright>Copyright © CryptoPay.NET 2023</Copyright>
         <PackageProjectUrl>https://github.com/WinoGarcia/CryptoPay</PackageProjectUrl>
+        <PackageReadmeFile>README.md</PackageReadmeFile>
         <PackageReleaseNotes></PackageReleaseNotes>
         <TargetFramework>net8.0</TargetFramework>
     </PropertyGroup>
 
     <ItemGroup>
-        <None Include="..\package-icon.png">
+        <None Include="..\package-icon.png" PackagePath="\">
             <Pack>True</Pack>
-            <PackagePath></PackagePath>
             <Link>package-icon.png</Link>
         </None>
     </ItemGroup>
 
     <ItemGroup>
-        <Content Include="..\README.md">
+        <None Include="..\README.md" PackagePath="\">
+            <Pack>True</Pack>
             <Link>README.md</Link>
-        </Content>
+        </None>
     </ItemGroup>
 
 </Project>
