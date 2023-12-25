@@ -16,7 +16,7 @@ internal sealed class GetInvoicesRequest : ParameterlessRequest<Invoices>
     /// </summary>
     /// <param name="assets">Optional. Currency codes separated by comma. Supported assets: <see cref="Assets" /></param>
     /// <param name="invoiceIds">Optional. Invoice IDs separated by comma.</param>
-    /// <param name="status">Optional. Status of invoices to be returned. Available statuses: “active” and “paid”. Defaults to all statuses.</param>
+    /// <param name="status">Optional. Status of invoices to be returned. Available statuses: <see cref="Statuses.active"/> and <see cref="Statuses.paid"/>. Defaults to all statuses.</param>
     /// <param name="offset">Optional. Offset needed to return a specific subset of invoices. Default is 0.</param>
     /// <param name="count">Optional. Number of invoices to be returned. Values between 1-1000 are accepted. Defaults to 100.</param>
     public GetInvoicesRequest(

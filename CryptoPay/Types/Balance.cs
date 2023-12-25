@@ -18,4 +18,10 @@ public sealed class Balance
     /// </summary>
     [JsonRequired]
     public double Available { get; set; }
+
+    /// <summary>
+    ///     Unavailable amount currently is on hold in float.
+    /// </summary>
+    [JsonRequired]
+    public string Onhold { get; set; }
 }

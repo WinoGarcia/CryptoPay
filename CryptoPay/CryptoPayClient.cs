@@ -68,6 +68,24 @@ public sealed class CryptoPayClient : ICryptoPayClient
                 cancellationToken)
             .ConfigureAwait(false);
 
+        if (httpResponse.StatusCode != HttpStatusCode.OK)
+        {
+            await httpResponse
+                .DeserializeContentAsync<ApiResponseWithError>(response =>
+                        response.Ok == false,
+                    cancellationToken)
+                .ConfigureAwait(false);
+        }
+
+        var apiResponse = await httpResponse
+            .DeserializeContentAsync<ApiResponse<TResponse>>(response =>
+                    response.Ok == false ||
+                    response.Result is null,
+                cancellationToken)
+            .ConfigureAwait(false);
+
+        return apiResponse.Result!;
+
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         static async Task<HttpResponseMessage> SendRequestAsync(
             HttpClient httpClient,
@@ -100,24 +118,6 @@ public sealed class CryptoPayClient : ICryptoPayClient
 
             return httpResponse;
         }
-
-        if (httpResponse.StatusCode != HttpStatusCode.OK)
-        {
-            await httpResponse
-                .DeserializeContentAsync<ApiResponseWithError>(response =>
-                        response.Ok == false,
-                    cancellationToken)
-                .ConfigureAwait(false);
-        }
-
-        var apiResponse = await httpResponse
-            .DeserializeContentAsync<ApiResponse<TResponse>>(response =>
-                    response.Ok == false ||
-                    response.Result is null,
-                cancellationToken)
-            .ConfigureAwait(false);
-
-        return apiResponse.Result!;
     }
 
     #endregion
