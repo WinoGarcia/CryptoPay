@@ -42,7 +42,7 @@ public sealed class Check
 
     /// <summary>
     ///     Status of the check, can be <see cref="CheckStatus.active"/> or <see cref="CheckStatus.activated"/>.
-    /// </summary
+    /// </summary>
     [JsonRequired]
     public CheckStatus Status { get; set; }
 

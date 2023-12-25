@@ -31,7 +31,7 @@ public class CreateInvoiceData : TheoryData<HttpStatusCode, Error?, CreateInvoic
                     2.35,
                     currencyType: CurrencyTypes.fiat,
                     asset: default,
-                    fiat: Fiats.EUR,
+                    fiat: Assets.EUR,
                     acceptedAssets: default,
                     description: "description",
                     hiddenMessage: "hiddenMessage",

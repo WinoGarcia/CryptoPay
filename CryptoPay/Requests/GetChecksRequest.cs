@@ -44,7 +44,7 @@ public sealed class GetChecksRequest : ParameterlessRequest<Checks>
     public IEnumerable<Assets> Assets { get; private set; }
 
     /// <summary>
-    ///     Optional. List of check IDs separated by comma.
+    ///     Optional. List of check IDs.
     /// </summary>
     public IEnumerable<long> CheckIds { get; private set; }
 

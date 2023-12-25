@@ -2,7 +2,6 @@
 using System.Threading;
 using System.Threading.Tasks;
 using CryptoPay.Exceptions;
-using CryptoPay.Extensions;
 using CryptoPay.Requests;
 using CryptoPay.Types;
 
@@ -31,12 +30,12 @@ public static class CryptoPayExtensions
     /// </summary>
     /// <param name="cryptoPayClientClient"><see cref="CryptoPayClient" /></param>
     /// <param name="amount">Amount of the invoice in float. For example: 125.50.</param>
-    /// <param name="currencyType">Optional. Type of the price, can be <see cref="CurrencyTypes.crypto"/> or <see cref="CurrencyTypes.fiat"/>. Defaults to crypto.</param>
-    /// <param name="asset">Optional.  Required if <see cref="currencyType"/> is <see cref="CurrencyTypes.crypto"/>. Cryptocurrency alphabetic code.</param>
-    /// <param name="fiats">Optional. Required if <see cref="currencyType"/> is <see cref="CurrencyTypes.fiat"/>. Fiat currency code.</param>
+    /// <param name="currencyType">Optional. Type of the price, can be <see cref="CurrencyTypes.crypto"/> or <see cref="CurrencyTypes.fiat"/>. Defaults to <see cref="CurrencyTypes.crypto"/>.</param>
+    /// <param name="asset">Optional.  Required if currencyType is <see cref="CurrencyTypes.crypto"/>. Cryptocurrency alphabetic code.</param>
+    /// <param name="fiats">Optional. Required if currencyType is <see cref="CurrencyTypes.fiat"/>. Fiat currency code.</param>
     /// <param name="acceptedAssets">
-    ///     Optional. List of cryptocurrency alphabetic codes separated comma. Assets which can be used to pay the invoice.
-    ///     Available only if <see cref="currencyType"/> is <see cref="CurrencyTypes.fiat"/>. Supported assets from <see cref="Assets"/>.
+    ///     Optional. List of cryptocurrency alphabetic codes. Assets which can be used to pay the invoice.
+    ///     Available only if currencyType is <see cref="CurrencyTypes.fiat"/>. Supported assets from <see cref="Assets"/>.
     ///     Defaults to all currencies.
     /// </param>
     /// <param name="description">Optional. Description for the invoice. User will see this description when they pay the invoice. Up to 1024 characters.</param>
@@ -51,14 +50,14 @@ public static class CryptoPayExtensions
     /// <param name="allowAnonymous">Optional. Allow a user to pay the invoice anonymously. Default is <c>true</c>.</param>
     /// <param name="expiresIn">Optional. Allow a user to pay the invoice anonymously. Default is true.</param>
     /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
-    /// <returns><see cref="Invoice" /></returns>
+    /// <returns><see cref="Invoice"/></returns>
     /// <exception cref="RequestException">This exception can be thrown.</exception>
     public static async Task<Invoice> CreateInvoiceAsync(
         this ICryptoPayClient cryptoPayClientClient,
         double amount,
         CurrencyTypes currencyType = CurrencyTypes.crypto,
         Assets? asset = default,
-        Fiats? fiats = default,
+        Assets? fiats = default,
         IEnumerable<Assets> acceptedAssets = default,
         string description = default,
         string hiddenMessage = default,
@@ -170,7 +169,7 @@ public static class CryptoPayExtensions
     /// </summary>
     /// <param name="cryptoPayClientClient"><see cref="CryptoPayClient" /></param>
     /// <param name="asset">Optional. Cryptocurrency alphabetic code. Supported crypto from <see cref="Assets"/>. Defaults to all currencies.</param>
-    /// <param name="transferIds">Optional. List of transfer IDs separated by comma.</param>
+    /// <param name="transferIds">Optional. List of transfer IDs.</param>
     /// <param name="offset">Optional. Offset needed to return a specific subset of transfers. Defaults to 0.</param>
     /// <param name="count">Optional. Number of transfers to be returned. Values between 1-1000 are accepted. Defaults to 100.</param>
     /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
@@ -207,16 +206,16 @@ public static class CryptoPayExtensions
     /// <exception cref="RequestException">This exception can be thrown.</exception>
     public static async Task<Invoices> GetInvoicesAsync(
         this ICryptoPayClient cryptoPayClientClient,
-        IList<Assets> assets = default,
-        IList<long> invoiceIds = default,
+        IEnumerable<Assets> assets = default,
+        IEnumerable<long> invoiceIds = default,
         Statuses? status = default,
         int offset = 0,
         int count = 100,
         CancellationToken cancellationToken = default) =>
         await cryptoPayClientClient
             .MakeRequestAsync(new GetInvoicesRequest(
-                    assets.Join(","),
-                    invoiceIds.Join(","),
+                    assets,
+                    invoiceIds,
                     status,
                     offset,
                     count),

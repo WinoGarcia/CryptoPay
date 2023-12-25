@@ -20,10 +20,10 @@ public sealed class CreateInvoiceRequest
     /// <param name="amount">Amount of the invoice in float. For example: 125.50</param>
     /// <param name="currencyType">Optional. Type of the price, can be <see cref="CurrencyTypes.crypto"/> or <see cref="CurrencyTypes.fiat"/>. Defaults to crypto.</param>
     /// <param name="asset">Currency code. Supported assets: <see cref="Assets" />.</param>
-    /// <param name="fiat">Optional. Required if <see cref="currencyType"/> is <see cref="CurrencyTypes.fiat"/>. Fiat currency code. Supported fiat currencies from <see cref="Fiats"/></param>
+    /// <param name="fiat">Optional. Required if currencyType is <see cref="CurrencyTypes.fiat"/>. Fiat currency code. Supported fiat currencies from <see cref="Assets"/></param>
     /// <param name="acceptedAssets">
-    ///     Optional. List of cryptocurrency alphabetic codes separated comma. Assets which can be used to pay the invoice.
-    ///     Available only if <see cref="currencyType"/> is <see cref="CurrencyTypes.fiat"/>. Supported assets from <see cref="Assets"/>.
+    ///     Optional. List of cryptocurrency alphabetic codes. Assets which can be used to pay the invoice.
+    ///     Available only if currencyType is <see cref="CurrencyTypes.fiat"/>. Supported assets from <see cref="Assets"/>.
     ///     Defaults to all currencies.
     /// </param>
     /// <param name="description">Optional. Description for the invoice. User will see this description when they pay the invoice. Up to 1024 characters.</param>
@@ -41,7 +41,7 @@ public sealed class CreateInvoiceRequest
         double amount,
         CurrencyTypes currencyType = CurrencyTypes.crypto,
         Assets? asset = default,
-        Fiats? fiat = default,
+        Assets? fiat = default,
         IEnumerable<Assets> acceptedAssets = default,
         string description = default,
         string hiddenMessage = default,
@@ -76,7 +76,7 @@ public sealed class CreateInvoiceRequest
     public Assets? Asset { get; set; }
 
     /// <inheritdoc />
-    public Fiats? Fiat { get; set; }
+    public Assets? Fiat { get; set; }
 
     /// <inheritdoc />
     [JsonRequired]

@@ -10,6 +10,8 @@ using CryptoPay.Tests.TestData;
 using CryptoPay.Types;
 using Xunit;
 
+#pragma warning disable CS0618 // Type or member is obsolete
+
 namespace CryptoPay.Tests;
 
 public class AvailableMethodsTests

@@ -15,7 +15,7 @@ public interface IInvoice
     /// <summary>
     /// Optional. Fiat currency code. Available only if the value of the field <see cref="CurrencyType"/> is <see cref="CurrencyTypes.fiat"/>.
     /// </summary>
-    public Fiats? Fiat { get; set; }
+    public Assets? Fiat { get; set; }
 
     /// <summary>
     ///     Amount of the invoice.

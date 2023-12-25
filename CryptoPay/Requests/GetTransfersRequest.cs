@@ -15,7 +15,7 @@ public sealed class GetTransfersRequest : ParameterlessRequest<Transfers>
     ///     Initializes a new request to get list of <see cref="Transfer"/>
     /// </summary>
     /// <param name="asset">Optional. Cryptocurrency alphabetic code. Supported crypto from <see cref="Assets"/>. Defaults to all currencies.</param>
-    /// <param name="transferIds">Optional. List of transfer IDs separated by comma.</param>
+    /// <param name="transferIds">Optional. List of transfer IDs.</param>
     /// <param name="offset">Optional. Offset needed to return a specific subset of transfers. Defaults to 0.</param>
     /// <param name="count">Optional. Number of transfers to be returned. Values between 1-1000 are accepted. Defaults to 100.</param>
     public GetTransfersRequest(
@@ -41,7 +41,7 @@ public sealed class GetTransfersRequest : ParameterlessRequest<Transfers>
     public IEnumerable<Assets> Asset { get; private set; }
 
     /// <summary>
-    ///     Optional. List of transfer IDs separated by comma.
+    ///     Optional. List of transfer IDs.
     /// </summary>
     public IEnumerable<string> TransferIds { get; private set; }
 

@@ -126,7 +126,7 @@ public sealed class Invoice : IInvoice
     ///     Optional. Fiat currency code. Available only if the value of the field <see cref="CurrencyType"/> is <see cref="CurrencyTypes.fiat"/>.
     ///     Currently one of fiat from <see cref="Assets"/>.
     /// </summary>
-    public Fiats? Fiat { get; set; }
+    public Assets? Fiat { get; set; }
 
     /// <summary>
     ///     Optional. Cryptocurrency alphabetic code for which the invoice was paid.

@@ -31,7 +31,7 @@ public sealed class DeleteInvoicesData : TheoryData<HttpStatusCode, Error?, Crea
                 2.35,
                 currencyType: CurrencyTypes.fiat,
                 asset: default,
-                fiat: Fiats.EUR,
+                fiat: Assets.EUR,
                 acceptedAssets: default,
                 description: "description",
                 hiddenMessage: "hiddenMessage",
