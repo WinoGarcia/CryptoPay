@@ -21,6 +21,7 @@ public enum Assets
     TRX,
     LTC,
     JET,
+    GRAM,
     
     //Fiat
     RUB = 100, // Russian ruble
