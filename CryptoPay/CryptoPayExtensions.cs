@@ -31,7 +31,9 @@ public static class CryptoPayExtensions
     /// <param name="cryptoPayClientClient"><see cref="CryptoPayClient" /></param>
     /// <param name="amount">Amount of the invoice in float. For example: 125.50.</param>
     /// <param name="currencyType">Optional. Type of the price, can be <see cref="CurrencyTypes.crypto"/> or <see cref="CurrencyTypes.fiat"/>. Defaults to <see cref="CurrencyTypes.crypto"/>.</param>
-    /// <param name="asset">Optional.  Required if currencyType is <see cref="CurrencyTypes.crypto"/>. Cryptocurrency alphabetic code.</param>
+    /// <param name="asset">Optional. Required if currencyType is <see cref="CurrencyTypes.crypto"/>. Cryptocurrency alphabetic code.
+    /// <remarks>Due to the fact that the list of available currencies in the CryptoPay service is constantly changing, utilizing <see cref="Assets"/> becomes ineffective. However, you can resort to using Enum.GetName(Assets.BTC) instead.</remarks>
+    /// </param>
     /// <param name="fiats">Optional. Required if currencyType is <see cref="CurrencyTypes.fiat"/>. Fiat currency code.</param>
     /// <param name="acceptedAssets">
     /// Optional. List of cryptocurrency alphabetic codes. Assets which can be used to pay the invoice.
@@ -56,9 +58,9 @@ public static class CryptoPayExtensions
         this ICryptoPayClient cryptoPayClientClient,
         double amount,
         CurrencyTypes currencyType = CurrencyTypes.crypto,
-        Assets? asset = default,
-        Assets? fiats = default,
-        IEnumerable<Assets> acceptedAssets = default,
+        string asset = default,
+        string fiats = default,
+        IEnumerable<string> acceptedAssets = default,
         string description = default,
         string hiddenMessage = default,
         PaidButtonNames? paidBtnName = default,
@@ -133,7 +135,9 @@ public static class CryptoPayExtensions
     /// </summary>
     /// <param name="cryptoPayClientClient"><see cref="CryptoPayClient" /></param>
     /// <param name="userId">Telegram user ID. User must have previously used <c>@CryptoBot</c> (<c>@CryptoTestnetBot</c> for testnet).</param>
-    /// <param name="asset">Currency code. <see cref="Assets" /></param>
+    /// <param name="asset">Currency code.
+    /// <remarks>Due to the fact that the list of available currencies in the CryptoPay service is constantly changing, utilizing <see cref="Assets"/> becomes ineffective. However, you can resort to using Enum.GetName(Assets.BTC) instead.</remarks>
+    /// </param>
     /// <param name="amount">Amount of the transfer in float. Values between $0.1-500 are accepted.</param>
     /// <param name="spendId">
     /// Unique ID to make your request idempotent and ensure that only one of the transfers with the same <c>spendId</c> will be accepted by Crypto Pay API.
@@ -148,7 +152,7 @@ public static class CryptoPayExtensions
     public static async Task<Transfer> TransferAsync(
         this ICryptoPayClient cryptoPayClientClient,
         long userId,
-        Assets asset,
+        string asset,
         double amount,
         string spendId,
         string comment = default,
@@ -169,7 +173,9 @@ public static class CryptoPayExtensions
     /// Use this method to get transfers created by your app. On success, returns array of <see cref="Transfer"/>.
     /// </summary>
     /// <param name="cryptoPayClientClient"><see cref="CryptoPayClient" /></param>
-    /// <param name="asset">Optional. Cryptocurrency alphabetic code. Supported crypto from <see cref="Assets"/>. Defaults to all currencies.</param>
+    /// <param name="asset">Optional. Cryptocurrency alphabetic code. Defaults to all currencies.
+    /// <remarks>Due to the fact that the list of available currencies in the CryptoPay service is constantly changing, utilizing <see cref="Assets"/> becomes ineffective. However, you can resort to using Enum.GetName(Assets.BTC) instead.</remarks>
+    /// </param>
     /// <param name="transferIds">Optional. List of transfer IDs.</param>
     /// <param name="offset">Optional. Offset needed to return a specific subset of transfers. Defaults to 0.</param>
     /// <param name="count">Optional. Number of transfers to be returned. Values between 1-1000 are accepted. Defaults to 100.</param>
@@ -178,7 +184,7 @@ public static class CryptoPayExtensions
     /// <exception cref="RequestException">This exception can be thrown.</exception>
     public static async Task<Transfers> GetTransfersAsync(
         this ICryptoPayClient cryptoPayClientClient,
-        IEnumerable<Assets> asset = default,
+        IEnumerable<string> asset = default,
         IEnumerable<string> transferIds = default,
         int offset = 0,
         int count = 100,
@@ -197,7 +203,9 @@ public static class CryptoPayExtensions
     /// Use this method to get invoices of your app. On success, returns array of <see cref="Invoice" />.
     /// </summary>
     /// <param name="cryptoPayClientClient"><see cref="CryptoPayClient"/></param>
-    /// <param name="assets">Optional. List of assets. Supported assets: <see cref="Assets" /></param>
+    /// <param name="assets">Optional. List of assets. Supported assets: <see cref="Assets" />
+    /// <remarks>Due to the fact that the list of available currencies in the CryptoPay service is constantly changing, utilizing <see cref="Assets"/> becomes ineffective. However, you can resort to using Enum.GetName(Assets.BTC) instead.</remarks>
+    /// </param>
     /// <param name="invoiceIds">Optional. List of Invoice IDs.</param>
     /// <param name="status">Optional. Status of invoices to be returned. Available statuses: “active” and “paid”. Defaults to all statuses.</param>
     /// <param name="offset">Optional. Offset needed to return a specific subset of invoices. Default is 0.</param>
@@ -207,7 +215,7 @@ public static class CryptoPayExtensions
     /// <exception cref="RequestException">This exception can be thrown.</exception>
     public static async Task<Invoices> GetInvoicesAsync(
         this ICryptoPayClient cryptoPayClientClient,
-        IEnumerable<Assets> assets = default,
+        IEnumerable<string> assets = default,
         IEnumerable<long> invoiceIds = default,
         Statuses? status = default,
         int offset = 0,
@@ -244,14 +252,16 @@ public static class CryptoPayExtensions
     /// Use this method to create a new <see cref="Check"/>.
     /// </summary>
     /// <param name="cryptoPayClientClient"><see cref="CryptoPayClient"/></param>
-    /// <param name="asset">Cryptocurrency alphabetic code. Supported crypto assets from <see cref="Assets"/>.</param>
+    /// <param name="asset">Cryptocurrency alphabetic code.
+    /// <remarks>Due to the fact that the list of available currencies in the CryptoPay service is constantly changing, utilizing <see cref="Assets"/> becomes ineffective. However, you can resort to using Enum.GetName(Assets.BTC) instead.</remarks>
+    /// </param>
     /// <param name="amount">Amount of the invoice in float. For example: 125.50</param>
     /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
     /// <returns><see cref="Check"/>On success, returns an <see cref="Check"/> of the created.</returns>
     /// <exception cref="RequestException">This exception can be thrown.</exception>
     public static async Task<Check> CreateCheckAsync(
         this ICryptoPayClient cryptoPayClientClient,
-        Assets asset,
+        string asset,
         double amount,
         CancellationToken cancellationToken = default) =>
         await cryptoPayClientClient
@@ -280,7 +290,9 @@ public static class CryptoPayExtensions
     /// Use this method to get checks created by your app.
     /// </summary>
     /// <param name="cryptoPayClientClient"><see cref="CryptoPayClient"/></param>
-    /// <param name="assets">Optional. Cryptocurrency alphabetic code. Supported crypto assets from <see cref="Assets"/>.Defaults to all currencies.</param>
+    /// <param name="assets">Optional. Cryptocurrency alphabetic code. Supported crypto assets from <see cref="Assets"/>.Defaults to all currencies.
+    /// <remarks>Due to the fact that the list of available currencies in the CryptoPay service is constantly changing, utilizing <see cref="Assets"/> becomes ineffective. However, you can resort to using Enum.GetName(Assets.BTC) instead.</remarks>
+    /// </param>
     /// <param name="checkIds">Optional. List of check IDs.</param>
     /// <param name="status">Optional. Status of check to be returned. Available statuses: <see cref="CheckStatus"/>. Defaults to all statuses.</param>
     /// <param name="offset">Optional. Offset needed to return a specific subset of check. Defaults to 0.</param>
@@ -290,7 +302,7 @@ public static class CryptoPayExtensions
     /// <exception cref="RequestException">This exception can be thrown.</exception>
     public static async Task<Checks> GetChecksAsync(
         this ICryptoPayClient cryptoPayClientClient,
-        IEnumerable<Assets> assets = default,
+        IEnumerable<string> assets = default,
         IEnumerable<long> checkIds = default,
         IEnumerable<Statuses> status = default,
         int offset = 0,

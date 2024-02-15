@@ -13,7 +13,7 @@ public interface ITransfer
     /// <summary>
     /// Currency code. Currently, can be <see cref="Assets"/>.
     /// </summary>
-    public Assets Asset { get; set; }
+    public string Asset { get; set; }
 
     /// <summary>
     /// Amount of the transfer.

@@ -20,7 +20,7 @@ public sealed class GetChecksRequest : ParameterlessRequest<Checks>
     /// <param name="offset">Optional. Offset needed to return a specific subset of check. Defaults to 0.</param>
     /// <param name="count">Optional. Number of check to be returned. Values between 1-1000 are accepted. Defaults to 100.</param>
     public GetChecksRequest(
-        IEnumerable<Assets> assets = default,
+        IEnumerable<string> assets = default,
         IEnumerable<long> checkIds = default,
         IEnumerable<Statuses> statuses = default,
         int offset = 0,
@@ -41,7 +41,7 @@ public sealed class GetChecksRequest : ParameterlessRequest<Checks>
     /// <summary>
     /// Optional. Cryptocurrency alphabetic code. Supported crypto from <see cref="Assets"/>. Defaults to all currencies.
     /// </summary>
-    public IEnumerable<Assets> Assets { get; private set; }
+    public IEnumerable<string> Assets { get; private set; }
 
     /// <summary>
     /// Optional. List of check IDs.

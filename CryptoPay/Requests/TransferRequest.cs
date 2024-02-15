@@ -15,7 +15,9 @@ public sealed class TransferRequest
     /// Initializes a new request to get a <see cref="Transfer"/>
     /// </summary>
     /// <param name="userId">Telegram user ID. User must have previously used <c>@CryptoBot</c> (<c>@CryptoTestnetBot</c> for testnet).</param>
-    /// <param name="asset">Currency code. <see cref="Assets" /></param>
+    /// <param name="asset">Currency code.
+    /// <remarks>Due to the fact that the list of available currencies in the CryptoPay service is constantly changing, utilizing <see cref="Assets"/> becomes ineffective. However, you can resort to using Enum.GetName(Assets.BTC) instead.</remarks>
+    /// </param>
     /// <param name="amount">Amount of the transfer in float. Values between $0.1-500 are accepted.</param>
     /// <param name="spendId">
     /// Unique ID to make your request idempotent and ensure that only one of the transfers with the same <c>spendId</c> will be accepted by Crypto Pay API.
@@ -26,7 +28,7 @@ public sealed class TransferRequest
     /// <param name="disableSendNotification">Optional. Pass true if the user should not receive a notification about the transfer. Default is <c>false</c>.</param>
     public TransferRequest(
         long userId,
-        Assets asset,
+        string asset,
         double amount,
         string spendId,
         string comment = default,
@@ -68,7 +70,7 @@ public sealed class TransferRequest
 
     /// <inheritdoc />
     [JsonRequired]
-    public Assets Asset { get; set; }
+    public string Asset { get; set; }
 
     /// <inheritdoc />
     [JsonRequired]

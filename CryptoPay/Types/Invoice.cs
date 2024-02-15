@@ -63,7 +63,7 @@ public sealed class Invoice : IInvoice
     public string Comment { get; set; }
 
     /// <inheritdoc />
-    public Assets? Asset { get; set; }
+    public string Asset { get; set; }
 
     /// <inheritdoc />
     [JsonRequired]
@@ -91,7 +91,7 @@ public sealed class Invoice : IInvoice
     public CurrencyTypes CurrencyType { get; set; }
 
     /// <inheritdoc />
-    public IEnumerable<Assets> AcceptedAssets { get; set; }
+    public IEnumerable<string> AcceptedAssets { get; set; }
 
     /// <summary>
     /// Optional. Amount of charged service fees.
@@ -126,7 +126,7 @@ public sealed class Invoice : IInvoice
     /// Optional. Fiat currency code. Available only if the value of the field <see cref="CurrencyType"/> is <see cref="CurrencyTypes.fiat"/>.
     /// Currently one of fiat from <see cref="Assets"/>.
     /// </summary>
-    public Assets? Fiat { get; set; }
+    public string Fiat { get; set; }
 
     /// <summary>
     /// Optional. Cryptocurrency alphabetic code for which the invoice was paid.

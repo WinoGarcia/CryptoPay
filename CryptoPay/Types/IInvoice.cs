@@ -10,12 +10,12 @@ public interface IInvoice
     /// <summary>
     /// Currency code. Currently, can be one of <see cref="Assets" />.
     /// </summary>
-    public Assets? Asset { get; set; }
+    public string Asset { get; set; }
 
     /// <summary>
     /// Optional. Fiat currency code. Available only if the value of the field <see cref="CurrencyType"/> is <see cref="CurrencyTypes.fiat"/>.
     /// </summary>
-    public Assets? Fiat { get; set; }
+    public string Fiat { get; set; }
 
     /// <summary>
     /// Amount of the invoice.
@@ -62,5 +62,5 @@ public interface IInvoice
     /// Available only if <see cref="CurrencyType"/> is <see cref="CurrencyTypes.fiat"/>.
     /// Currently, can be one of crypto from <see cref="Assets"/>.
     /// </summary>
-    public IEnumerable<Assets> AcceptedAssets { get; set; }
+    public IEnumerable<string> AcceptedAssets { get; set; }
 }

@@ -29,13 +29,13 @@ public sealed class ExchangeRate
     /// Source currency.
     /// </summary>
     [JsonRequired]
-    public Assets Source { get; set; }
+    public string Source { get; set; }
 
     /// <summary>
     /// Target currency. 
     /// </summary>
     [JsonRequired]
-    public Assets Target { get; set; }
+    public string Target { get; set; }
 
     /// <summary>
     /// Exchange rate.

@@ -26,7 +26,7 @@ public sealed class Check
     /// Cryptocurrency alphabetic code. Currently, can be one of <see cref="Assets"/>.
     /// </summary>
     [JsonRequired]
-    public Assets Asset { get; set; }
+    public string Asset { get; set; }
 
     /// <summary>
     /// Amount of the check in float.

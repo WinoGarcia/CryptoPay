@@ -18,7 +18,7 @@ public class TransferData : TheoryData<HttpStatusCode, Error?, TransferRequest>
             default,
             new TransferRequest(
                 CryptoPayTestHelper.UserId,
-                Assets.TON,
+                Enum.GetName(Assets.TON),
                 0.5,
                 Guid.NewGuid().ToString(),
                 disableSendNotification: true)
@@ -29,7 +29,7 @@ public class TransferData : TheoryData<HttpStatusCode, Error?, TransferRequest>
             default,
             new TransferRequest(
                 CryptoPayTestHelper.UserId,
-                Assets.TON,
+                Enum.GetName(Assets.TON),
                 0.5,
                 Guid.NewGuid().ToString(),
                 Guid.NewGuid().ToString(),
@@ -41,7 +41,7 @@ public class TransferData : TheoryData<HttpStatusCode, Error?, TransferRequest>
             default,
             new TransferRequest(
                 CryptoPayTestHelper.UserId,
-                Assets.BNB,
+                Enum.GetName(Assets.BNB),
                 0.0123,
                 Guid.NewGuid().ToString(),
                 disableSendNotification: false)
@@ -52,8 +52,17 @@ public class TransferData : TheoryData<HttpStatusCode, Error?, TransferRequest>
             new Error(400, "AMOUNT_TOO_BIG"),
             new TransferRequest(
                 CryptoPayTestHelper.UserId,
-                Assets.BTC,
+                Enum.GetName(Assets.BTC),
                 1000,
+                Guid.NewGuid().ToString())
+        );
+        this.Add(
+            HttpStatusCode.InternalServerError,
+            new Error(500, "APP_ERROR"),
+            new TransferRequest(
+                CryptoPayTestHelper.UserId,
+                "FFF",
+                10,
                 Guid.NewGuid().ToString())
         );
     }

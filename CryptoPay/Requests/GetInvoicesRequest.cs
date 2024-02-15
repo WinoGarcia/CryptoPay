@@ -21,7 +21,7 @@ internal sealed class GetInvoicesRequest : ParameterlessRequest<Invoices>
     /// <param name="offset">Optional. Offset needed to return a specific subset of invoices. Default is 0.</param>
     /// <param name="count">Optional. Number of invoices to be returned. Values between 1-1000 are accepted. Defaults to 100.</param>
     public GetInvoicesRequest(
-        IEnumerable<Assets> assets = default,
+        IEnumerable<string> assets = default,
         IEnumerable<long> invoiceIds = default,
         Statuses? status = default,
         int offset = 0,
@@ -42,7 +42,7 @@ internal sealed class GetInvoicesRequest : ParameterlessRequest<Invoices>
     /// Supported assets: <see cref="Assets"/>.
     /// Defaults to all assets.
     /// </summary>
-    public IEnumerable<Assets> Assets { get; set; }
+    public IEnumerable<string> Assets { get; set; }
 
     /// <summary>
     /// Optional. Invoice IDs.

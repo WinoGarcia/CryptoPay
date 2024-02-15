@@ -19,7 +19,9 @@ public sealed class CreateInvoiceRequest
     /// </summary>
     /// <param name="amount">Amount of the invoice in float. For example: 125.50</param>
     /// <param name="currencyType">Optional. Type of the price, can be <see cref="CurrencyTypes.crypto"/> or <see cref="CurrencyTypes.fiat"/>. Defaults to crypto.</param>
-    /// <param name="asset">Currency code. Supported assets: <see cref="Assets" />.</param>
+    /// <param name="asset">Currency code.
+    /// <remarks>Due to the fact that the list of available currencies in the CryptoPay service is constantly changing, utilizing <see cref="Assets"/> becomes ineffective. However, you can resort to using Enum.GetName(Assets.BTC) instead.</remarks>
+    /// </param>
     /// <param name="fiat">Optional. Required if currencyType is <see cref="CurrencyTypes.fiat"/>. Fiat currency code. Supported fiat currencies from <see cref="Assets"/></param>
     /// <param name="acceptedAssets">
     /// Optional. List of cryptocurrency alphabetic codes. Assets which can be used to pay the invoice.
@@ -40,9 +42,9 @@ public sealed class CreateInvoiceRequest
     public CreateInvoiceRequest(
         double amount,
         CurrencyTypes currencyType = CurrencyTypes.crypto,
-        Assets? asset = default,
-        Assets? fiat = default,
-        IEnumerable<Assets> acceptedAssets = default,
+        string asset = default,
+        string fiat = default,
+        IEnumerable<string> acceptedAssets = default,
         string description = default,
         string hiddenMessage = default,
         PaidButtonNames? paidBtnName = default,
@@ -73,10 +75,10 @@ public sealed class CreateInvoiceRequest
     #region Public Fields
 
     /// <inheritdoc />
-    public Assets? Asset { get; set; }
+    public string Asset { get; set; }
 
     /// <inheritdoc />
-    public Assets? Fiat { get; set; }
+    public string Fiat { get; set; }
 
     /// <inheritdoc />
     [JsonRequired]
@@ -105,7 +107,7 @@ public sealed class CreateInvoiceRequest
     public CurrencyTypes CurrencyType { get; set; }
 
     /// <inheritdoc />
-    public IEnumerable<Assets> AcceptedAssets { get; set; }
+    public IEnumerable<string> AcceptedAssets { get; set; }
 
     /// <summary>
     /// Optional. Allow a user to pay the invoice anonymously. Default is true.

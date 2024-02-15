@@ -6,7 +6,10 @@ namespace CryptoPay.Types;
 // ReSharper disable InconsistentNaming
 // ReSharper disable IdentifierTypo
 /// <summary>
-/// Available crypto currencies.
+/// Available crypto and fiat currencies.
+/// <remarks>
+/// Given that the list of available currencies in the CryptoPay service frequently changes, the utilization of these Assets becomes less effective.
+/// However, you can convert an Assets value into a string by using Enum.GetName(Assets.BTC), or obtain an Assets value from a text string by using Enum.Parse(yourString)</remarks>
 /// </summary>
 [JsonConverter(typeof(JsonStringEnumConverter))]
 public enum Assets

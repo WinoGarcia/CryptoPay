@@ -18,7 +18,7 @@ public sealed class Transfer : ITransfer
 
     /// <inheritdoc/>
     [JsonRequired]
-    public Assets Asset { get; set; }
+    public string Asset { get; set; }
 
     /// <inheritdoc/>
     [JsonRequired]

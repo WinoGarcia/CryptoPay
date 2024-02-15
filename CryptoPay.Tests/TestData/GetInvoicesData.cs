@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Net;
 using CryptoPay.Types;
 using Xunit;
@@ -9,7 +10,7 @@ public class GetInvoicesData
     : TheoryData<
         HttpStatusCode,
         Error?,
-        IList<Assets>?, // assets
+        IList<string>?, // assets
         IList<long>?, // invoiceIds
         Statuses?, //status
         int, // offset 
@@ -23,7 +24,7 @@ public class GetInvoicesData
         this.Add(
             default,
             default,
-            new List<Assets>(),
+            new List<string>(),
             default,
             Statuses.active,
             5,
@@ -32,10 +33,10 @@ public class GetInvoicesData
         this.Add(
             default,
             default,
-            new List<Assets>
+            new List<string>
             {
-                Assets.TON,
-                Assets.BNB
+                Enum.GetName(Assets.TON),
+                Enum.GetName(Assets.BNB)
             },
             default,
             Statuses.active,
