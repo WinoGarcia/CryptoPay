@@ -3,24 +3,24 @@
 namespace CryptoPay.Types;
 
 /// <summary>
-///     Basic information about an application.
+/// Basic information about an application.
 /// </summary>
 public sealed class CryptoPayApplication
 {
     /// <summary>
-    ///     Your application Id.
+    /// Your application Id.
     /// </summary>
     [JsonRequired]
     public long AppId { get; set; }
 
     /// <summary>
-    ///     Your application Name.
+    /// Your application Name.
     /// </summary>
     [JsonRequired]
     public string Name { get; set; }
 
     /// <summary>
-    ///     Payment processing bot username, main or test bot username.
+    /// Payment processing bot username, main or test bot username.
     /// </summary>
     [JsonRequired]
     public string PaymentProcessingBotUsername { get; set; }

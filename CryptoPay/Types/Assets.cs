@@ -6,7 +6,7 @@ namespace CryptoPay.Types;
 // ReSharper disable InconsistentNaming
 // ReSharper disable IdentifierTypo
 /// <summary>
-///     Available crypto currencies.
+/// Available crypto currencies.
 /// </summary>
 [JsonConverter(typeof(JsonStringEnumConverter))]
 public enum Assets

@@ -3,48 +3,48 @@
 namespace CryptoPay.Types;
 
 /// <summary>
-///     Supported currencies.
+/// Supported currencies.
 /// </summary>
 public sealed class Currency
 {
     /// <summary>
-    ///     Is blockchain.
+    /// Is blockchain.
     /// </summary>
     [JsonRequired]
     public bool IsBlockchain { get; set; }
 
     /// <summary>
-    ///     Is stablecoin.
+    /// Is stablecoin.
     /// </summary>
     [JsonRequired]
     // ReSharper disable once IdentifierTypo
     public bool IsStablecoin { get; set; }
 
     /// <summary>
-    ///     Ordinary currency.
+    /// Ordinary currency.
     /// </summary>
     [JsonRequired]
     public bool IsFiat { get; set; }
 
     /// <summary>
-    ///     Name.
+    /// Name.
     /// </summary>
     [JsonRequired]
     public string Name { get; set; }
 
     /// <summary>
-    ///     Code.
+    /// Code.
     /// </summary>
     [JsonRequired]
     public string Code { get; set; }
 
     /// <summary>
-    ///     Url.
+    /// Url.
     /// </summary>
     public string Url { get; set; }
 
     /// <summary>
-    ///     Number of decimal places. 
+    /// Number of decimal places. 
     /// </summary>
     [JsonRequired]
     public int Decimals { get; set; }

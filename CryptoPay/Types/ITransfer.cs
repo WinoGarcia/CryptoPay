@@ -6,22 +6,22 @@
 public interface ITransfer
 {
     /// <summary>
-    ///     Telegram user ID the transfer was sent to.
+    /// Telegram user ID the transfer was sent to.
     /// </summary>
     public long UserId { get; set; }
 
     /// <summary>
-    ///     Currency code. Currently, can be <see cref="Assets"/>.
+    /// Currency code. Currently, can be <see cref="Assets"/>.
     /// </summary>
     public Assets Asset { get; set; }
 
     /// <summary>
-    ///     Amount of the transfer.
+    /// Amount of the transfer.
     /// </summary>
     public double Amount { get; set; }
 
     /// <summary>
-    ///     Optional. Comment for this transfer.
+    /// Optional. Comment for this transfer.
     /// </summary>
     public string Comment { get; set; }
 }

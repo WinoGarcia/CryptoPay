@@ -16,13 +16,13 @@ public sealed class CryptoPayClient : ICryptoPayClient
     #region Constructors
 
     /// <summary>
-    ///     Create <see cref="ICryptoPayClient" /> instance.
+    /// Create <see cref="ICryptoPayClient" /> instance.
     /// </summary>
     /// <param name="token">Your application token from CryptoPay.</param>
     /// <param name="httpClient">Optional. <see cref="HttpClient" />.</param>
     /// <param name="apiUrl">
-    ///     Optional. Default value is <see cref="DefaultCryptoBotApiUrl" /> main api url.
-    ///     Test api url is <code>https://testnet-pay.crypt.bot/</code>.
+    /// Optional. Default value is <see cref="DefaultCryptoBotApiUrl" /> main api url.
+    /// Test api url is <code>https://testnet-pay.crypt.bot/</code>.
     /// </param>
     /// <exception cref="ArgumentNullException">If token is null.</exception>
     public CryptoPayClient(
@@ -125,7 +125,7 @@ public sealed class CryptoPayClient : ICryptoPayClient
     #region Public Fields
 
     /// <summary>
-    ///     Crypto Bot Api Url.
+    /// Crypto Bot Api Url.
     /// </summary>
     private static string DefaultCryptoBotApiUrl { get; } = "https://pay.crypt.bot/";
 

@@ -13,7 +13,7 @@ using CryptoPay.Types;
 namespace CryptoPay.Extensions;
 
 /// <summary>
-///     HttpResponseMessage extension class.
+/// HttpResponseMessage extension class.
 /// </summary>
 public static class HttpResponseMessageExtensions
 {
@@ -36,7 +36,7 @@ public static class HttpResponseMessageExtensions
     }
 
     /// <summary>
-    ///     Deserialize body from HttpContent into <typeparamref name="T" />.
+    /// Deserialize body from HttpContent into <typeparamref name="T" />.
     /// </summary>
     /// <param name="httpResponse"><see cref="HttpResponseMessage" /> instance.</param>
     /// <param name="guard"></param>
@@ -44,7 +44,7 @@ public static class HttpResponseMessageExtensions
     /// <typeparam name="T">Type of the resulting object.</typeparam>
     /// <returns></returns>
     /// <exception cref="RequestException">
-    ///     Thrown when body in the response can not be deserialized into <typeparamref name="T" />.
+    /// Thrown when body in the response can not be deserialized into <typeparamref name="T" />.
     /// </exception>
     [MethodImpl(MethodImplOptions.AggressiveInlining)]
     internal static async Task<T> DeserializeContentAsync<T>(

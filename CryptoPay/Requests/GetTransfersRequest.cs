@@ -5,14 +5,14 @@ using CryptoPay.Types;
 namespace CryptoPay.Requests;
 
 /// <summary>
-///      Use this class to get list of <see cref="Transfer"/> request.
+///  Use this class to get list of <see cref="Transfer"/> request.
 /// </summary>
 public sealed class GetTransfersRequest : ParameterlessRequest<Transfers>
 {
     #region Constructors
 
     /// <summary>
-    ///     Initializes a new request to get list of <see cref="Transfer"/>
+    /// Initializes a new request to get list of <see cref="Transfer"/>
     /// </summary>
     /// <param name="asset">Optional. Cryptocurrency alphabetic code. Supported crypto from <see cref="Assets"/>. Defaults to all currencies.</param>
     /// <param name="transferIds">Optional. List of transfer IDs.</param>
@@ -41,17 +41,17 @@ public sealed class GetTransfersRequest : ParameterlessRequest<Transfers>
     public IEnumerable<Assets> Asset { get; private set; }
 
     /// <summary>
-    ///     Optional. List of transfer IDs.
+    /// Optional. List of transfer IDs.
     /// </summary>
     public IEnumerable<string> TransferIds { get; private set; }
 
     /// <summary>
-    ///     Optional. Offset needed to return a specific subset of transfers. Defaults to 0.
+    /// Optional. Offset needed to return a specific subset of transfers. Defaults to 0.
     /// </summary>
     public int Offset { get; private set; }
 
     /// <summary>
-    ///     Optional. Number of transfers to be returned. Values between 1-1000 are accepted. Defaults to 100.
+    /// Optional. Number of transfers to be returned. Values between 1-1000 are accepted. Defaults to 100.
     /// </summary>
     public int Count { get; private set; }
 

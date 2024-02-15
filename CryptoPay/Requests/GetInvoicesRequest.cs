@@ -6,14 +6,14 @@ using CryptoPay.Types;
 namespace CryptoPay.Requests;
 
 /// <summary>
-///     Use this class to get <see cref="Invoices"/> request.
+/// Use this class to get <see cref="Invoices"/> request.
 /// </summary>
 internal sealed class GetInvoicesRequest : ParameterlessRequest<Invoices>
 {
     #region Constructors
 
     /// <summary>
-    ///     Initializes a new request to get <see cref="Invoices"/>
+    /// Initializes a new request to get <see cref="Invoices"/>
     /// </summary>
     /// <param name="assets">Optional. Currency codes. Supported assets: <see cref="Assets" /></param>
     /// <param name="invoiceIds">Optional. Invoice IDs.</param>
@@ -38,33 +38,33 @@ internal sealed class GetInvoicesRequest : ParameterlessRequest<Invoices>
     #endregion
 
     /// <summary>
-    ///     Optional. Currency codes.
-    ///     Supported assets: <see cref="Assets"/>.
-    ///     Defaults to all assets.
+    /// Optional. Currency codes.
+    /// Supported assets: <see cref="Assets"/>.
+    /// Defaults to all assets.
     /// </summary>
     public IEnumerable<Assets> Assets { get; set; }
 
     /// <summary>
-    ///     Optional. Invoice IDs.
+    /// Optional. Invoice IDs.
     /// </summary>
     public IEnumerable<long> InvoiceIds { get; set; }
 
     /// <summary>
-    ///     Optional. Status of invoices to be returned. Available statuses: <see cref="Statuses"/>.
-    ///     Defaults to all statuses.
+    /// Optional. Status of invoices to be returned. Available statuses: <see cref="Statuses"/>.
+    /// Defaults to all statuses.
     /// </summary>
     public Statuses? Status { get; set; }
 
     /// <summary>
-    ///     Optional. Offset needed to return a specific subset of invoices.
-    ///     Default is 0.
+    /// Optional. Offset needed to return a specific subset of invoices.
+    /// Default is 0.
     /// </summary>
     [JsonRequired]
     public int Offset { get; set; }
 
     /// <summary>
-    ///     Optional. Number of invoices to be returned. Values between 1-1000 are accepted.
-    ///     Defaults to 100.
+    /// Optional. Number of invoices to be returned. Values between 1-1000 are accepted.
+    /// Defaults to 100.
     /// </summary>
     [JsonRequired]
     public int Count { get; set; }

@@ -5,12 +5,12 @@ using System.Text;
 namespace CryptoPay.Extensions;
 
 /// <summary>
-///     Enumerable extension class.
+/// Enumerable extension class.
 /// </summary>
 public static class EnumerableExtensions
 {
     /// <summary>
-    ///     Join item from enumerable if it is not null or empty.
+    /// Join item from enumerable if it is not null or empty.
     /// </summary>
     /// <param name="self"><see cref="IEnumerable{T}"/>.</param>
     /// <param name="delimiter">Separator.</param>

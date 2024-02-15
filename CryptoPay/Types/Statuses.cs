@@ -6,7 +6,7 @@ using System.Text.Json.Serialization;
 namespace CryptoPay.Types;
 
 /// <summary>
-///     Status of invoices to be returned.
+/// Status of invoices to be returned.
 /// </summary>
 [JsonConverter(typeof(JsonStringEnumConverter))]
 public enum Statuses

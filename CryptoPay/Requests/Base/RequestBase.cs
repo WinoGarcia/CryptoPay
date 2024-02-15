@@ -29,14 +29,14 @@ public class RequestBase<TResponse> : IRequest<TResponse>
     #region Constructors
 
     /// <summary>
-    ///     Initializes an instance of request.
+    /// Initializes an instance of request.
     /// </summary>
     /// <param name="methodName">Bot API method</param>
     protected RequestBase(string methodName)
         : this(methodName, HttpMethod.Post) {}
 
     /// <summary>
-    ///     Initializes an instance of request.
+    /// Initializes an instance of request.
     /// </summary>
     /// <param name="methodName">Bot API method.</param>
     /// <param name="method">HTTP method to use.</param>

@@ -3,12 +3,12 @@
 namespace CryptoPay.Types;
 
 /// <summary>
-///     Error from response.
+/// Error from response.
 /// </summary>
 public sealed class Error
 {
     /// <summary>
-    ///     Create instance of <see cref="Error"/>.
+    /// Create instance of <see cref="Error"/>.
     /// </summary>
     /// <param name="code"></param>
     /// <param name="name"></param>
@@ -22,13 +22,13 @@ public sealed class Error
     private Error() {}
 
     /// <summary>
-    ///     Error code from response.
+    /// Error code from response.
     /// </summary>
     [JsonRequired]
     public int Code { get; set; }
 
     /// <summary>
-    ///     Error name from response.
+    /// Error name from response.
     /// </summary>
     [JsonRequired]
     public string Name { get; set; }

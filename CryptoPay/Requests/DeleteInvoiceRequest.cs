@@ -4,7 +4,7 @@ using CryptoPay.Requests.Base;
 namespace CryptoPay.Requests;
 
 /// <summary>
-///     Use this method to delete invoices created by your app.
+/// Use this method to delete invoices created by your app.
 /// </summary>
 public sealed class DeleteInvoiceRequest
     : ParameterlessRequest<bool>
@@ -12,7 +12,7 @@ public sealed class DeleteInvoiceRequest
     #region Constructors
 
     /// <summary>
-    ///     Initializes a new request delete invoices created by your app.
+    /// Initializes a new request delete invoices created by your app.
     /// </summary>
     /// <param name="invoiceId">Invoice ID to be deleted.</param>
     public DeleteInvoiceRequest(long invoiceId) 
@@ -26,7 +26,7 @@ public sealed class DeleteInvoiceRequest
     #region Public Fields
     
     /// <summary>
-    ///     Unique ID for this invoice.
+    /// Unique ID for this invoice.
     /// </summary>
     [JsonRequired]
     public long InvoiceId { get; set; }

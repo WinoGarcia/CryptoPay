@@ -7,7 +7,7 @@ using Xunit;
 namespace CryptoPay.Tests.TestData;
 
 /// <summary>
-///     For this test, you must have test coins.
+/// For this test, you must have test coins.
 /// </summary>
 public class TransferData : TheoryData<HttpStatusCode, Error?, TransferRequest>
 {

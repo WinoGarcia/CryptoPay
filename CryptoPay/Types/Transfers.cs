@@ -5,14 +5,14 @@ using System.Text.Json.Serialization;
 namespace CryptoPay.Types;
 
 /// <summary>
-///     Object include list of <see cref="Transfer"/>.
+/// Object include list of <see cref="Transfer"/>.
 /// </summary>
 public sealed class Transfers
 {
     #region Constructors
 
     /// <summary>
-    ///     Initializes a new object include list of <see cref="Transfer"/>.
+    /// Initializes a new object include list of <see cref="Transfer"/>.
     /// </summary>
     public Transfers()
     {
@@ -24,7 +24,7 @@ public sealed class Transfers
     #region Public Fields
 
     /// <summary>
-    ///     List of <see cref="Transfer"/>.
+    /// List of <see cref="Transfer"/>.
     /// </summary>
     [JsonRequired]
     public IEnumerable<Transfer> Items { get; set; }

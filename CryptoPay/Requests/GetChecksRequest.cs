@@ -5,14 +5,14 @@ using CryptoPay.Types;
 namespace CryptoPay.Requests;
 
 /// <summary>
-///     Use this request to get checks created by your app. On success, returns array of <see cref="Check"/>.
+/// Use this request to get checks created by your app. On success, returns array of <see cref="Check"/>.
 /// </summary>
 public sealed class GetChecksRequest : ParameterlessRequest<Checks>
 {
     #region Constructors
 
     /// <summary>
-    ///     Initializes a new request to get list of <see cref="Check"/>
+    /// Initializes a new request to get list of <see cref="Check"/>
     /// </summary>
     /// <param name="assets">Optional. Cryptocurrency alphabetic code. Supported assets: <see cref="Assets"/>. Defaults to all currencies.</param>
     /// <param name="checkIds">Optional. List of check IDs.</param>
@@ -44,22 +44,22 @@ public sealed class GetChecksRequest : ParameterlessRequest<Checks>
     public IEnumerable<Assets> Assets { get; private set; }
 
     /// <summary>
-    ///     Optional. List of check IDs.
+    /// Optional. List of check IDs.
     /// </summary>
     public IEnumerable<long> CheckIds { get; private set; }
 
     /// <summary>
-    ///     Optional. Offset needed to return a specific subset of check. Defaults to 0.
+    /// Optional. Offset needed to return a specific subset of check. Defaults to 0.
     /// </summary>
     public IEnumerable<Statuses> Statuses { get; private set; }
 
     /// <summary>
-    ///     Optional. Offset needed to return a specific subset of check. Defaults to 0.
+    /// Optional. Offset needed to return a specific subset of check. Defaults to 0.
     /// </summary>
     public int Offset { get; private set; }
 
     /// <summary>
-    ///     Optional. Number of check to be returned. Values between 1-1000 are accepted. Defaults to 100.
+    /// Optional. Number of check to be returned. Values between 1-1000 are accepted. Defaults to 100.
     /// </summary>
     public int Count { get; private set; }
 

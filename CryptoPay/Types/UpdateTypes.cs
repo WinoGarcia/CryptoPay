@@ -6,7 +6,7 @@ using System.Text.Json.Serialization;
 namespace CryptoPay.Types;
 
 /// <summary>
-///     Type of <see cref="Update"/>.
+/// Type of <see cref="Update"/>.
 /// </summary>
 [JsonConverter(typeof(JsonStringEnumConverter))]
 public enum UpdateTypes

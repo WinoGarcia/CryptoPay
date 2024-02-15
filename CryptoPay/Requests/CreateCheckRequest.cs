@@ -12,7 +12,7 @@ public sealed class CreateCheckRequest : ParameterlessRequest<Check>
     #region Constructors
 
     /// <summary>
-    ///     Initializes a new request to create <see cref="Check"/>
+    /// Initializes a new request to create <see cref="Check"/>
     /// </summary>
     /// <param name="asset">Cryptocurrency alphabetic code. Supported <see cref="Assets"/>.</param>
     /// <param name="amount">Amount of the invoice in float. For example: 125.50</param>
@@ -30,13 +30,13 @@ public sealed class CreateCheckRequest : ParameterlessRequest<Check>
     #region Public Fields
 
     /// <summary>
-    ///     Cryptocurrency alphabetic code. Supported <see cref="Assets"/>.
+    /// Cryptocurrency alphabetic code. Supported <see cref="Assets"/>.
     /// </summary>
     [JsonRequired]
     public Assets Asset { get; set; }
 
     /// <summary>
-    ///     Amount of the invoice in float. For example: 125.50
+    /// Amount of the invoice in float. For example: 125.50
     /// </summary>
     [JsonRequired]
     public double Amount { get; set; }

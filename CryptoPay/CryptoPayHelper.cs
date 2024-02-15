@@ -6,12 +6,12 @@ using CryptoPay.Types;
 namespace CryptoPay;
 
 /// <summary>
-///     Helper for main <see cref="CryptoPayClient"/>.
+/// Helper for main <see cref="CryptoPayClient"/>.
 /// </summary>
 public static class CryptoPayHelper
 {
     /// <summary>
-    ///     This method verify the integrity of the received data.
+    /// This method verify the integrity of the received data.
     /// </summary>
     /// <param name="signature">Sting from header parameter <c>crypto-pay-api-signature</c>.</param>
     /// <param name="token">Your application token from CryptoPay.</param>

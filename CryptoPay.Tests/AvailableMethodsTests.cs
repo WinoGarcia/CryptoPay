@@ -150,7 +150,7 @@ public class AvailableMethodsTests
     }
 
     /// <summary>
-    ///     For this test, you must have test coins.
+    /// For this test, you must have test coins.
     /// </summary>
     [Theory]
     [ClassData(typeof(TransferData))]
@@ -181,7 +181,7 @@ public class AvailableMethodsTests
     }
 
     /// <summary>
-    ///     For this test, you must have test coins.
+    /// For this test, you must have test coins.
     /// </summary>
     [Theory]
     [ClassData(typeof(GetTransfersData))]
