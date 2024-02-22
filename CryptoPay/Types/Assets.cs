@@ -9,7 +9,7 @@ namespace CryptoPay.Types;
 /// Available crypto and fiat currencies.
 /// <remarks>
 /// Given that the list of available currencies in the CryptoPay service frequently changes, the utilization of these Assets becomes less effective.
-/// However, you can convert an Assets value into a string by using Assets.BTC.ToString(), or obtain an Assets value from a text string by using Enum.Parse(yourString)</remarks>
+/// However, you can convert an <see cref="Assets"/> value into a string by using Assets.BTC.ToString(), or obtain an Assets value from a text string by using <see cref="AssetsHelper.TryParse"/></remarks>
 /// </summary>
 [JsonConverter(typeof(JsonStringEnumConverter))]
 public enum Assets
@@ -21,170 +21,170 @@ public enum Assets
     /// Due to the fact that the list of available currencies in the CryptoPay service is constantly changing, utilizing <see cref="Assets"/> becomes ineffective.
     /// However, you can utilize the <see cref="AssetsHelper.TryParse"/> method to convert a string value to <see cref="Assets"/>. If the specified string value does not correspond to any element in <see cref="Assets"/>, the method will revert to the default <see cref="Assets.Unknown"/>.
     /// </remarks>>
-    Unknown = 0,
+    Unknown = -1,
 
     // Crypto
 
     /// <summary>
     /// Bitcoin
     /// </summary>
-    BTC = 1,
+    BTC,
 
     /// <summary>
     /// TonCoin
     /// </summary>
-    TON = 2,
+    TON,
 
     /// <summary>
     /// Ethereum
     /// </summary>
-    ETH = 3,
+    ETH,
 
     /// <summary>
     /// BNB Coin
     /// </summary>
-    BNB = 4,
+    BNB,
 
     /// <summary>
     /// Tether (USDT)
     /// </summary>
-    USDT = 5,
+    USDT,
 
     /// <summary>
     /// USD Coin
     /// </summary>
-    USDC = 6,
+    USDC,
 
     /// <summary>
     /// TRON (TRX)
     /// </summary>
-    TRX = 7,
+    TRX,
 
     /// <summary>
     /// Litecoin
     /// </summary>
-    LTC = 8,
+    LTC,
 
     /// <summary>
     /// Jetcoin
     /// </summary>
-    JET = 9,
+    JET,
 
     /// <summary>
     /// Jetton GRAM from blockchain TON
     /// </summary>
     /// <seealso href="https://gramcoin.org/"/>
-    GRAM = 1000,
+    GRAM,
 
     // Fiat
 
     /// <summary>
     /// Russian ruble
     /// </summary>
-    RUB = 10000,
+    RUB = 100,
 
     /// <summary>
     /// Dollar USA
     /// </summary>
-    USD = 10001,
+    USD = 101,
 
     /// <summary>
     /// Euro
     /// </summary>
-    EUR = 10002,
+    EUR = 102,
 
     /// <summary>
     /// Belarusian ruble
     /// </summary>
-    BYN = 10003,
+    BYN = 103,
 
     /// <summary>
     /// Ukrainian hryvnia
     /// </summary>
-    UAH = 10004,
+    UAH = 104,
 
     /// <summary>
     /// Pound sterling
     /// </summary>
-    GBP = 10005,
+    GBP = 105,
 
     /// <summary>
     /// Renminbi
     /// </summary>
-    CNY = 10006,
+    CNY = 106,
 
     /// <summary>
     /// Kazakhstani tenge
     /// </summary>
-    KZT = 10007,
+    KZT = 107,
 
     /// <summary>
     /// Uzbekistani som
     /// </summary>
-    UZS = 10008,
+    UZS = 108,
 
     /// <summary>
     /// Georgian lari
     /// </summary>
-    GEL = 10009,
+    GEL = 109,
 
     /// <summary>
     /// Turkish lira
     /// </summary>
-    TRY = 10010,
+    TRY = 110,
 
     /// <summary>
     /// Armenian dram
     /// </summary>
-    AMD = 10011,
+    AMD = 111,
 
     /// <summary>
     /// Thai baht
     /// </summary>
-    THB = 10012,
+    THB = 112,
 
     /// <summary>
     /// Indian rupee
     /// </summary>
-    INR = 10013,
+    INR = 113,
 
     /// <summary>
     /// Brazilian real
     /// </summary>
-    BRL = 10014,
+    BRL = 114,
 
     /// <summary>
     /// Indonesian rupiah
     /// </summary>
-    IDR = 10015,
+    IDR = 115,
 
     /// <summary>
     /// Azerbaijani manat
     /// </summary>
-    AZN = 10016,
+    AZN = 116,
 
     /// <summary>
     /// United Arab Emirates dirham 
     /// </summary>
-    AED = 10017,
+    AED = 117,
 
     /// <summary>
     /// Polish złoty
     /// </summary>
-    PLN = 10018,
+    PLN = 118,
 
     /// <summary>
     /// Israeli new shekel
     /// </summary>
-    ILS = 10019,
+    ILS = 119,
 
     /// <summary>
     /// Kyrgyz som
     /// </summary>
-    KGS = 10020,
+    KGS = 120,
 
     /// <summary>
     /// Tajikistani somoni
     /// </summary>
-    TJS = 10021
+    TJS = 121
 }
