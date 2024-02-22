@@ -32,7 +32,7 @@ public static class CryptoPayExtensions
     /// <param name="amount">Amount of the invoice in float. For example: 125.50.</param>
     /// <param name="currencyType">Optional. Type of the price, can be <see cref="CurrencyTypes.crypto"/> or <see cref="CurrencyTypes.fiat"/>. Defaults to <see cref="CurrencyTypes.crypto"/>.</param>
     /// <param name="asset">Optional. Required if currencyType is <see cref="CurrencyTypes.crypto"/>. Cryptocurrency alphabetic code.
-    /// <remarks>Due to the fact that the list of available currencies in the CryptoPay service is constantly changing, utilizing <see cref="Assets"/> becomes ineffective. However, you can resort to using Enum.GetName(Assets.BTC) instead.</remarks>
+    /// <remarks>Due to the fact that the list of available currencies in the CryptoPay service is constantly changing, utilizing <see cref="Assets"/> becomes ineffective. However, you can resort to using Assets.BTC.ToString() instead.</remarks>
     /// </param>
     /// <param name="fiats">Optional. Required if currencyType is <see cref="CurrencyTypes.fiat"/>. Fiat currency code.</param>
     /// <param name="acceptedAssets">
@@ -136,7 +136,7 @@ public static class CryptoPayExtensions
     /// <param name="cryptoPayClientClient"><see cref="CryptoPayClient" /></param>
     /// <param name="userId">Telegram user ID. User must have previously used <c>@CryptoBot</c> (<c>@CryptoTestnetBot</c> for testnet).</param>
     /// <param name="asset">Currency code.
-    /// <remarks>Due to the fact that the list of available currencies in the CryptoPay service is constantly changing, utilizing <see cref="Assets"/> becomes ineffective. However, you can resort to using Enum.GetName(Assets.BTC) instead.</remarks>
+    /// <remarks>Due to the fact that the list of available currencies in the CryptoPay service is constantly changing, utilizing <see cref="Assets"/> becomes ineffective. However, you can resort to using Assets.BTC.ToString() instead.</remarks>
     /// </param>
     /// <param name="amount">Amount of the transfer in float. Values between $0.1-500 are accepted.</param>
     /// <param name="spendId">
@@ -174,7 +174,7 @@ public static class CryptoPayExtensions
     /// </summary>
     /// <param name="cryptoPayClientClient"><see cref="CryptoPayClient" /></param>
     /// <param name="asset">Optional. Cryptocurrency alphabetic code. Defaults to all currencies.
-    /// <remarks>Due to the fact that the list of available currencies in the CryptoPay service is constantly changing, utilizing <see cref="Assets"/> becomes ineffective. However, you can resort to using Enum.GetName(Assets.BTC) instead.</remarks>
+    /// <remarks>Due to the fact that the list of available currencies in the CryptoPay service is constantly changing, utilizing <see cref="Assets"/> becomes ineffective. However, you can resort to using Assets.BTC.ToString() instead.</remarks>
     /// </param>
     /// <param name="transferIds">Optional. List of transfer IDs.</param>
     /// <param name="offset">Optional. Offset needed to return a specific subset of transfers. Defaults to 0.</param>
@@ -204,7 +204,7 @@ public static class CryptoPayExtensions
     /// </summary>
     /// <param name="cryptoPayClientClient"><see cref="CryptoPayClient"/></param>
     /// <param name="assets">Optional. List of assets. Supported assets: <see cref="Assets" />
-    /// <remarks>Due to the fact that the list of available currencies in the CryptoPay service is constantly changing, utilizing <see cref="Assets"/> becomes ineffective. However, you can resort to using Enum.GetName(Assets.BTC) instead.</remarks>
+    /// <remarks>Due to the fact that the list of available currencies in the CryptoPay service is constantly changing, utilizing <see cref="Assets"/> becomes ineffective. However, you can resort to using Assets.BTC.ToString() instead.</remarks>
     /// </param>
     /// <param name="invoiceIds">Optional. List of Invoice IDs.</param>
     /// <param name="status">Optional. Status of invoices to be returned. Available statuses: “active” and “paid”. Defaults to all statuses.</param>
@@ -253,7 +253,7 @@ public static class CryptoPayExtensions
     /// </summary>
     /// <param name="cryptoPayClientClient"><see cref="CryptoPayClient"/></param>
     /// <param name="asset">Cryptocurrency alphabetic code.
-    /// <remarks>Due to the fact that the list of available currencies in the CryptoPay service is constantly changing, utilizing <see cref="Assets"/> becomes ineffective. However, you can resort to using Enum.GetName(Assets.BTC) instead.</remarks>
+    /// <remarks>Due to the fact that the list of available currencies in the CryptoPay service is constantly changing, utilizing <see cref="Assets"/> becomes ineffective. However, you can resort to using Assets.BTC.ToString() instead.</remarks>
     /// </param>
     /// <param name="amount">Amount of the invoice in float. For example: 125.50</param>
     /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
@@ -291,7 +291,7 @@ public static class CryptoPayExtensions
     /// </summary>
     /// <param name="cryptoPayClientClient"><see cref="CryptoPayClient"/></param>
     /// <param name="assets">Optional. Cryptocurrency alphabetic code. Supported crypto assets from <see cref="Assets"/>.Defaults to all currencies.
-    /// <remarks>Due to the fact that the list of available currencies in the CryptoPay service is constantly changing, utilizing <see cref="Assets"/> becomes ineffective. However, you can resort to using Enum.GetName(Assets.BTC) instead.</remarks>
+    /// <remarks>Due to the fact that the list of available currencies in the CryptoPay service is constantly changing, utilizing <see cref="Assets"/> becomes ineffective. However, you can resort to using Assets.BTC.ToString() instead.</remarks>
     /// </param>
     /// <param name="checkIds">Optional. List of check IDs.</param>
     /// <param name="status">Optional. Status of check to be returned. Available statuses: <see cref="CheckStatus"/>. Defaults to all statuses.</param>

@@ -15,7 +15,7 @@ public sealed class CreateCheckRequest : ParameterlessRequest<Check>
     /// Initializes a new request to create <see cref="Check"/>
     /// </summary>
     /// <param name="asset">Cryptocurrency alphabetic code.
-    /// <remarks>Due to the fact that the list of available currencies in the CryptoPay service is constantly changing, utilizing <see cref="Assets"/> becomes ineffective. However, you can resort to using Enum.GetName(Assets.BTC) instead.</remarks>
+    /// <remarks>Due to the fact that the list of available currencies in the CryptoPay service is constantly changing, utilizing <see cref="Assets"/> becomes ineffective. However, you can resort to using Assets.BTC.ToString() instead.</remarks>
     /// </param>
     /// <param name="amount">Amount of the invoice in float. For example: 125.50</param>
     public CreateCheckRequest(

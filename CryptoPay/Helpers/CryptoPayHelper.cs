@@ -3,6 +3,7 @@ using System.Security.Cryptography;
 using System.Text;
 using CryptoPay.Types;
 
+// ReSharper disable once CheckNamespace
 namespace CryptoPay;
 
 /// <summary>

@@ -1,5 +1,4 @@
-﻿using System;
-using System.Net;
+﻿using System.Net;
 using CryptoPay.Requests;
 using CryptoPay.Types;
 using Xunit;
@@ -15,7 +14,7 @@ public sealed class DeleteInvoicesData : TheoryData<HttpStatusCode, Error?, Crea
             default,
             new CreateInvoiceRequest(
                 5.105,
-                asset: Enum.GetName(Assets.TON),
+                asset: Assets.TON.ToString(),
                 description: "description",
                 hiddenMessage: "hiddenMessage",
                 paidBtnName: PaidButtonNames.callback,
@@ -32,7 +31,7 @@ public sealed class DeleteInvoicesData : TheoryData<HttpStatusCode, Error?, Crea
                 2.35,
                 currencyType: CurrencyTypes.fiat,
                 asset: default,
-                fiat: Enum.GetName(Assets.EUR),
+                fiat: Assets.EUR.ToString(),
                 acceptedAssets: default,
                 description: "description",
                 hiddenMessage: "hiddenMessage",

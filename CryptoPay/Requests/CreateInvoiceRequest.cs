@@ -20,7 +20,7 @@ public sealed class CreateInvoiceRequest
     /// <param name="amount">Amount of the invoice in float. For example: 125.50</param>
     /// <param name="currencyType">Optional. Type of the price, can be <see cref="CurrencyTypes.crypto"/> or <see cref="CurrencyTypes.fiat"/>. Defaults to crypto.</param>
     /// <param name="asset">Currency code.
-    /// <remarks>Due to the fact that the list of available currencies in the CryptoPay service is constantly changing, utilizing <see cref="Assets"/> becomes ineffective. However, you can resort to using Enum.GetName(Assets.BTC) instead.</remarks>
+    /// <remarks>Due to the fact that the list of available currencies in the CryptoPay service is constantly changing, utilizing <see cref="Assets"/> becomes ineffective. However, you can resort to using Assets.BTC.ToString() instead.</remarks>
     /// </param>
     /// <param name="fiat">Optional. Required if currencyType is <see cref="CurrencyTypes.fiat"/>. Fiat currency code. Supported fiat currencies from <see cref="Assets"/></param>
     /// <param name="acceptedAssets">

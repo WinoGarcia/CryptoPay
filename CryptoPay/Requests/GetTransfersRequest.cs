@@ -15,7 +15,7 @@ public sealed class GetTransfersRequest : ParameterlessRequest<Transfers>
     /// Initializes a new request to get list of <see cref="Transfer"/>
     /// </summary>
     /// <param name="asset">Optional. Cryptocurrency alphabetic code. Defaults to all currencies.
-    /// <remarks>Due to the fact that the list of available currencies in the CryptoPay service is constantly changing, utilizing <see cref="Assets"/> becomes ineffective. However, you can resort to using Enum.GetName(Assets.BTC) instead.</remarks>
+    /// <remarks>Due to the fact that the list of available currencies in the CryptoPay service is constantly changing, utilizing <see cref="Assets"/> becomes ineffective. However, you can resort to using Assets.BTC.ToString() instead.</remarks>
     /// </param>
     /// <param name="transferIds">Optional. List of transfer IDs.</param>
     /// <param name="offset">Optional. Offset needed to return a specific subset of transfers. Defaults to 0.</param>

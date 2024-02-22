@@ -105,7 +105,7 @@ public class AvailableMethodsTests
             Assert.Equal(invoiceRequest.Amount, invoice.Amount);
             Assert.Equal(invoiceRequest.CurrencyType, invoice.CurrencyType);
             Assert.Equal(invoiceRequest.Asset, invoice.Asset);
-            Assert.Equal(Enum.Parse<Assets>(invoiceRequest.Asset), Enum.Parse<Assets>(invoice.Asset));
+            Assert.Equal(AssetsHelper.TryParse(invoiceRequest.Asset), AssetsHelper.TryParse(invoice.Asset));
             Assert.Equal(invoiceRequest.Fiat, invoice.Fiat);
             // Assert.Equal(invoiceRequest.AcceptedAssets, invoice.AcceptedAssets);
             Assert.Equal(invoiceRequest.Description, invoice.Description);
@@ -171,7 +171,7 @@ public class AvailableMethodsTests
             Assert.NotNull(transfer);
             Assert.Equal(transferRequest.UserId, transfer.UserId);
             Assert.Equal(transferRequest.Asset, transfer.Asset);
-            Assert.Equal(Enum.Parse<Assets>(transferRequest.Asset), Enum.Parse<Assets>(transferRequest.Asset));
+            Assert.Equal(AssetsHelper.TryParse(transferRequest.Asset), AssetsHelper.TryParse(transferRequest.Asset));
             Assert.Equal(transferRequest.Amount, transfer.Amount);
             //Assert.Equal(transferRequest.Comment, transfer.Comment);
             Assert.Equal(transferRequest.DisableSendNotification, transferRequest.DisableSendNotification);
@@ -288,7 +288,7 @@ public class AvailableMethodsTests
 
             Assert.NotNull(check);
             Assert.Equal(createCheckRequest.Asset, check.Asset);
-            Assert.Equal(Enum.Parse<Assets>(createCheckRequest.Asset), Enum.Parse<Assets>(check.Asset));
+            Assert.Equal(AssetsHelper.TryParse(createCheckRequest.Asset), AssetsHelper.TryParse(check.Asset));
             Assert.Equal(createCheckRequest.Amount, check.Amount);
         }
         catch (RequestException requestException)

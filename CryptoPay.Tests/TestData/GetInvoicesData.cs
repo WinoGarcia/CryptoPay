@@ -1,5 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Net;
 using CryptoPay.Types;
 using Xunit;
@@ -35,8 +34,8 @@ public class GetInvoicesData
             default,
             new List<string>
             {
-                Enum.GetName(Assets.TON),
-                Enum.GetName(Assets.BNB)
+                Assets.TON.ToString(),
+                Assets.BNB.ToString()
             },
             default,
             Statuses.active,

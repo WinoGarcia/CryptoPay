@@ -1,5 +1,4 @@
-﻿using System;
-using System.Net;
+﻿using System.Net;
 using CryptoPay.Requests;
 using CryptoPay.Types;
 using Xunit;
@@ -17,14 +16,14 @@ public sealed class CreateCheckData : TheoryData<HttpStatusCode, Error?, CreateC
             default,
             default,
             new CreateCheckRequest(
-                Enum.GetName(Assets.BNB),
+                Assets.BNB.ToString(),
                 0.0123)
         );
         this.Add(
             HttpStatusCode.BadRequest,
             new Error(400, "NOT_ENOUGH_COINS"),
             new CreateCheckRequest(
-                Enum.GetName(Assets.TON),
+                Assets.TON.ToString(),
                 100.2345)
         );
         this.Add(
