@@ -28,53 +28,53 @@ public enum Assets
     /// <summary>
     /// Bitcoin
     /// </summary>
-    BTC,
+    BTC = 0,
 
     /// <summary>
     /// TonCoin
     /// </summary>
-    TON,
+    TON = 1,
 
     /// <summary>
     /// Ethereum
     /// </summary>
-    ETH,
+    ETH = 2,
 
     /// <summary>
     /// BNB Coin
     /// </summary>
-    BNB,
+    BNB = 3,
 
     /// <summary>
     /// Tether (USDT)
     /// </summary>
-    USDT,
+    USDT = 4,
 
     /// <summary>
     /// USD Coin
     /// </summary>
-    USDC,
+    USDC = 5,
 
     /// <summary>
     /// TRON (TRX)
     /// </summary>
-    TRX,
+    TRX = 6,
 
     /// <summary>
     /// Litecoin
     /// </summary>
-    LTC,
+    LTC = 7,
 
     /// <summary>
     /// Jetcoin
-    /// </summary>
-    JET,
+    /// </summary>уа
+    JET = 8,
 
     /// <summary>
     /// Jetton GRAM from blockchain TON
     /// </summary>
     /// <seealso href="https://gramcoin.org/"/>
-    GRAM,
+    GRAM = 9,
 
     // Fiat
 
