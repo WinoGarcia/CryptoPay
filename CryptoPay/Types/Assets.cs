@@ -67,7 +67,7 @@ public enum Assets
 
     /// <summary>
     /// Jetcoin
-    /// </summary>уа
+    /// </summary>
     JET = 8,
 
     /// <summary>
