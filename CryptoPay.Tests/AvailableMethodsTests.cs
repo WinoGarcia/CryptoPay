@@ -86,6 +86,7 @@ public class AvailableMethodsTests
         {
             var invoice = await this.cryptoPayClient.CreateInvoiceAsync(
                 invoiceRequest.Amount,
+                invoiceRequest.SwapTo,
                 invoiceRequest.CurrencyType,
                 invoiceRequest.Asset,
                 invoiceRequest.Fiat,
@@ -262,6 +263,7 @@ public class AvailableMethodsTests
         {
             var invoice = await this.cryptoPayClient.CreateInvoiceAsync(
                 invoiceRequest.Amount,
+                invoiceRequest.SwapTo,
                 invoiceRequest.CurrencyType,
                 invoiceRequest.Asset,
                 invoiceRequest.Fiat,

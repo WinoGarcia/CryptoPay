@@ -70,6 +70,44 @@ public sealed class Invoice : IInvoice
     public double Amount { get; set; }
 
     /// <inheritdoc />
+    public string SwapTo { get; set; }
+
+    /// <summary>
+    /// Optional. For invoices with the <see cref="Statuses.paid"/> status, this flag indicates whether the swap was successful (only applicable if <see cref="SwapTo"/> is set).
+    /// </summary>
+    public bool? IsSwapped { get; set; }
+
+    /// <summary>
+    /// Optional. If <see cref="IsSwapped"/> is <see langword="true"/>, stores the unique identifier of the swap.
+    /// </summary>
+    public string SwappedUid { get; set; }
+
+    /// <summary>
+    /// Optional. If <see cref="IsSwapped"/> is <see langword="true"/>, stores the asset into which the swap was made.
+    /// </summary>
+    public string SwappedTo { get; set; }
+
+    /// <summary>
+    /// Optional. If <see cref="IsSwapped"/> is <see langword="true"/>, stores the exchange rate at which the swap was executed.
+    /// </summary>
+    public string SwappedRate { get; set; }
+
+    /// <summary>
+    /// Optional. If <see cref="IsSwapped"/> is <see langword="true"/>, stores the amount received as a result of the swap (in the <see cref="SwappedTo"/> asset).
+    /// </summary>
+    public string SwappedOutput { get; set; }
+
+    /// <summary>
+    /// Optional. If <see cref="IsSwapped"/> is <see langword="true"/>, stores the resulting swap amount in USD.
+    /// </summary>
+    public string SwappedUsdAmount { get; set; }
+
+    /// <summary>
+    /// Optional. If <see cref="IsSwapped"/> is <see langword="true"/>, stores the USD exchange rate of the currency from <see cref="SwappedTo"/>.
+    /// </summary>
+    public string SwappedUsdRate { get; set; }
+
+    /// <inheritdoc />
     public string Description { get; set; }
 
     /// <inheritdoc />

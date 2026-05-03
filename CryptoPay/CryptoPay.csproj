@@ -3,9 +3,9 @@
     <PropertyGroup>
         <LangVersion>default</LangVersion>
         <Nullable>disable</Nullable>
-        <AssemblyVersion>1.5.0.1</AssemblyVersion>
-        <FileVersion>1.5.0.1</FileVersion>
-        <PackageVersion>1.5.0.1</PackageVersion>
+        <AssemblyVersion>1.5.1.0</AssemblyVersion>
+        <FileVersion>1.5.1.0</FileVersion>
+        <PackageVersion>1.5.1.0</PackageVersion>
         <Title>Crypto Pay Client</Title>
         <Authors>Alexander Shitov</Authors>
         <Description>Cryptocurrency payment system based on @cryptobot in Telegram</Description>

@@ -19,6 +19,10 @@ public sealed class CreateInvoiceRequest
     /// Initializes a new request to create <see cref="Invoice"/>
     /// </summary>
     /// <param name="amount">Amount of the invoice in float. For example: 125.50</param>
+    /// <param name="swapTo">
+    /// Optional. The asset that will be attempted to be swapped into after the user makes a payment (the swap is not guaranteed).
+    /// Supported assets: "USDT", "TON", "TRX", "ETH", "SOL", "BTC", "LTC".
+    /// </param>
     /// <param name="currencyType">Optional. Type of the price, can be <see cref="CurrencyTypes.crypto"/> or <see cref="CurrencyTypes.fiat"/>. Defaults to crypto.</param>
     /// <param name="asset">Currency code.
     /// <remarks>Due to the fact that the list of available currencies in the CryptoPay service is constantly changing, utilizing assets becomes ineffective. However, you can resort to using Assets.BTC.ToString() instead.</remarks>
@@ -42,6 +46,7 @@ public sealed class CreateInvoiceRequest
     /// <param name="expiresIn">You can set a payment time limit for the invoice in <b>seconds</b>. Values between 1-2678400 are accepted.</param>
     public CreateInvoiceRequest(
         double amount,
+        string swapTo = default,
         CurrencyTypes currencyType = CurrencyTypes.crypto,
         string asset = default,
         string fiat = default,
@@ -58,6 +63,7 @@ public sealed class CreateInvoiceRequest
     {
         this.CurrencyType = currencyType;
         this.Amount = amount;
+        this.SwapTo = swapTo;
         this.Asset = asset;
         this.Fiat = fiat;
         this.AcceptedAssets = acceptedAssets;
@@ -84,6 +90,9 @@ public sealed class CreateInvoiceRequest
     /// <inheritdoc />
     [JsonRequired]
     public double Amount { get; set; }
+
+    /// <inheritdoc />
+    public string SwapTo { get; set; }
 
     /// <inheritdoc />
     public string Description { get; set; }

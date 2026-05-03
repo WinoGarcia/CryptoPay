@@ -21,6 +21,7 @@ public class CreateInvoiceData : TheoryData<HttpStatusCode, Error?, CreateInvoic
             default,
             new CreateInvoiceRequest(
                 1.105,
+                default,
                 CurrencyTypes.fiat,
                 fiat: "USD")
         );
@@ -44,6 +45,7 @@ public class CreateInvoiceData : TheoryData<HttpStatusCode, Error?, CreateInvoic
             default,
             new CreateInvoiceRequest(
                 2.35,
+                default,
                 CurrencyTypes.fiat,
                 default,
                 "EUR",
@@ -63,6 +65,7 @@ public class CreateInvoiceData : TheoryData<HttpStatusCode, Error?, CreateInvoic
             default,
             new CreateInvoiceRequest(
                 0.0234,
+                default,
                 CurrencyTypes.crypto,
                 "BNB",
                 default,
@@ -82,6 +85,7 @@ public class CreateInvoiceData : TheoryData<HttpStatusCode, Error?, CreateInvoic
             default,
             new CreateInvoiceRequest(
                 1.23,
+                default,
                 CurrencyTypes.fiat,
                 default,
                 "EUR",

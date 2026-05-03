@@ -31,6 +31,10 @@ public static class CryptoPayExtensions
     /// </summary>
     /// <param name="cryptoPayClientClient"><see cref="CryptoPayClient" /></param>
     /// <param name="amount">Amount of the invoice in float. For example: 125.50.</param>
+    /// <param name="swapTo">
+    /// Optional. The asset that will be attempted to be swapped into after the user makes a payment (the swap is not guaranteed).
+    /// Supported assets: "USDT", "TON", "TRX", "ETH", "SOL", "BTC", "LTC".
+    /// </param>
     /// <param name="currencyType">Optional. Type of the price, can be <see cref="CurrencyTypes.crypto"/> or <see cref="CurrencyTypes.fiat"/>. Defaults to <see cref="CurrencyTypes.crypto"/>.</param>
     /// <param name="asset">Optional. Required if currencyType is <see cref="CurrencyTypes.crypto"/>. Cryptocurrency alphabetic code.
     /// <remarks>Due to the fact that the list of available currencies in the CryptoPay service is constantly changing, utilizing assets becomes ineffective. However, you can resort to using Assets.BTC.ToString() instead.</remarks>
@@ -58,6 +62,7 @@ public static class CryptoPayExtensions
     public static async Task<Invoice> CreateInvoiceAsync(
         this ICryptoPayClient cryptoPayClientClient,
         double amount,
+        string swapTo = default,
         CurrencyTypes currencyType = CurrencyTypes.crypto,
         string asset = default,
         string fiats = default,
@@ -74,6 +79,7 @@ public static class CryptoPayExtensions
         await cryptoPayClientClient
             .MakeRequestAsync(new CreateInvoiceRequest(
                     amount,
+                    swapTo,
                     currencyType,
                     asset,
                     fiats,

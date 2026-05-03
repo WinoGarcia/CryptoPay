@@ -23,6 +23,12 @@ public interface IInvoice
     public double Amount { get; set; }
 
     /// <summary>
+    /// Optional. The asset that will be attempted to be swapped into after the user makes a payment (the swap is not guaranteed).
+    /// Supported assets: "USDT", "TON", "TRX", "ETH", "SOL", "BTC", "LTC".
+    /// </summary>
+    public string SwapTo { get; set; }
+
+    /// <summary>
     /// Optional. Description for this invoice.
     /// </summary>
     public string Description { get; set; }
