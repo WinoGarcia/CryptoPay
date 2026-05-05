@@ -1,6 +1,6 @@
-﻿using System.Collections.Generic;
+﻿using CryptoPay.Types;
+using System.Collections.Generic;
 using System.Net;
-using CryptoPay.Types;
 using Xunit;
 
 namespace CryptoPay.Tests.TestData;
@@ -57,7 +57,7 @@ public class GetInvoicesData
         );
         this.Add(
             HttpStatusCode.InternalServerError,
-            new Error(500, "APP_ERROR"),
+            new Error(500, "INTERNAL_SERVER_ERROR"),
             default,
             default,
             default,
