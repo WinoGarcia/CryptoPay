@@ -1,6 +1,6 @@
-﻿using System.Net;
-using CryptoPay.Requests;
+﻿using CryptoPay.Requests;
 using CryptoPay.Types;
+using System.Net;
 using Xunit;
 
 namespace CryptoPay.Tests.TestData;
@@ -55,7 +55,8 @@ public class CreateInvoiceData : TheoryData<HttpStatusCode, Error?, CreateInvoic
                 "payload",
                 true,
                 false,
-                360)
+                360,
+                default)
         );
 
         this.Add(
@@ -74,7 +75,8 @@ public class CreateInvoiceData : TheoryData<HttpStatusCode, Error?, CreateInvoic
                 "payload",
                 true,
                 false,
-                360)
+                360,
+                default)
         );
 
         this.Add(
@@ -85,9 +87,19 @@ public class CreateInvoiceData : TheoryData<HttpStatusCode, Error?, CreateInvoic
                 CurrencyTypes.fiat,
                 default,
                 "EUR",
-                new []{ "TON", "USDT" },
+                new[] { "TON", "USDT" },
                 "description",
                 "hiddenMessage")
+        );
+
+        this.Add(
+            default,
+            default,
+            new CreateInvoiceRequest(
+                amount: 1.23,
+                currencyType: CurrencyTypes.crypto,
+                asset: "USDT",
+                swapTo: "TON")
         );
 
         this.Add(

@@ -1,8 +1,8 @@
-﻿using System.Collections.Generic;
-using System.Text.Json.Serialization;
-using CryptoPay.Converters;
+﻿using CryptoPay.Converters;
 using CryptoPay.Requests.Base;
 using CryptoPay.Types;
+using System.Collections.Generic;
+using System.Text.Json.Serialization;
 
 namespace CryptoPay.Requests;
 
@@ -40,6 +40,10 @@ public sealed class CreateInvoiceRequest
     /// <param name="allowComments">Optional. Allow a user to add a comment to the payment. Default is true.</param>
     /// <param name="allowAnonymous">Optional. Allow a user to pay the invoice anonymously. Default is <c>true</c>.</param>
     /// <param name="expiresIn">You can set a payment time limit for the invoice in <b>seconds</b>. Values between 1-2678400 are accepted.</param>
+    /// <param name="swapTo">
+    /// Optional. The asset that will be attempted to be swapped into after the user makes a payment (the swap is not guaranteed).
+    /// Supported assets: "USDT", "TON", "TRX", "ETH", "SOL", "BTC", "LTC".
+    /// </param>
     public CreateInvoiceRequest(
         double amount,
         CurrencyTypes currencyType = CurrencyTypes.crypto,
@@ -53,7 +57,8 @@ public sealed class CreateInvoiceRequest
         string payload = default,
         bool allowComments = true,
         bool allowAnonymous = true,
-        int expiresIn = 2678400)
+        int expiresIn = 2678400,
+        string swapTo = default)
         : base("createInvoice")
     {
         this.CurrencyType = currencyType;
@@ -69,6 +74,7 @@ public sealed class CreateInvoiceRequest
         this.AllowComments = allowComments;
         this.AllowAnonymous = allowAnonymous;
         this.ExpiresIn = expiresIn;
+        this.SwapTo = swapTo;
     }
 
     #endregion
@@ -84,6 +90,9 @@ public sealed class CreateInvoiceRequest
     /// <inheritdoc />
     [JsonRequired]
     public double Amount { get; set; }
+
+    /// <inheritdoc />
+    public string SwapTo { get; set; }
 
     /// <inheritdoc />
     public string Description { get; set; }
