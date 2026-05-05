@@ -1,6 +1,6 @@
-﻿using System.Net;
-using CryptoPay.Requests;
+﻿using CryptoPay.Requests;
 using CryptoPay.Types;
+using System.Net;
 using Xunit;
 
 namespace CryptoPay.Tests.TestData;
@@ -21,7 +21,6 @@ public class CreateInvoiceData : TheoryData<HttpStatusCode, Error?, CreateInvoic
             default,
             new CreateInvoiceRequest(
                 1.105,
-                default,
                 CurrencyTypes.fiat,
                 fiat: "USD")
         );
@@ -45,7 +44,6 @@ public class CreateInvoiceData : TheoryData<HttpStatusCode, Error?, CreateInvoic
             default,
             new CreateInvoiceRequest(
                 2.35,
-                default,
                 CurrencyTypes.fiat,
                 default,
                 "EUR",
@@ -57,7 +55,8 @@ public class CreateInvoiceData : TheoryData<HttpStatusCode, Error?, CreateInvoic
                 "payload",
                 true,
                 false,
-                360)
+                360,
+                default)
         );
 
         this.Add(
@@ -65,7 +64,6 @@ public class CreateInvoiceData : TheoryData<HttpStatusCode, Error?, CreateInvoic
             default,
             new CreateInvoiceRequest(
                 0.0234,
-                default,
                 CurrencyTypes.crypto,
                 "BNB",
                 default,
@@ -77,7 +75,8 @@ public class CreateInvoiceData : TheoryData<HttpStatusCode, Error?, CreateInvoic
                 "payload",
                 true,
                 false,
-                360)
+                360,
+                default)
         );
 
         this.Add(
@@ -85,13 +84,22 @@ public class CreateInvoiceData : TheoryData<HttpStatusCode, Error?, CreateInvoic
             default,
             new CreateInvoiceRequest(
                 1.23,
-                default,
                 CurrencyTypes.fiat,
                 default,
                 "EUR",
-                new []{ "TON", "USDT" },
+                new[] { "TON", "USDT" },
                 "description",
                 "hiddenMessage")
+        );
+
+        this.Add(
+            default,
+            default,
+            new CreateInvoiceRequest(
+                amount: 1.23,
+                currencyType: CurrencyTypes.crypto,
+                asset: "USDT",
+                swapTo: "TON")
         );
 
         this.Add(

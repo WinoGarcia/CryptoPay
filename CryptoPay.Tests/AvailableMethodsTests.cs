@@ -1,3 +1,7 @@
+using CryptoPay.Exceptions;
+using CryptoPay.Requests;
+using CryptoPay.Tests.TestData;
+using CryptoPay.Types;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -5,10 +9,6 @@ using System.Net;
 using System.Net.Http;
 using System.Threading;
 using System.Threading.Tasks;
-using CryptoPay.Exceptions;
-using CryptoPay.Requests;
-using CryptoPay.Tests.TestData;
-using CryptoPay.Types;
 using Xunit;
 
 #pragma warning disable CS0618 // Type or member is obsolete
@@ -86,7 +86,6 @@ public class AvailableMethodsTests
         {
             var invoice = await this.cryptoPayClient.CreateInvoiceAsync(
                 invoiceRequest.Amount,
-                invoiceRequest.SwapTo,
                 invoiceRequest.CurrencyType,
                 invoiceRequest.Asset,
                 invoiceRequest.Fiat,
@@ -99,6 +98,7 @@ public class AvailableMethodsTests
                 invoiceRequest.AllowComments!.Value,
                 invoiceRequest.AllowAnonymous!.Value,
                 invoiceRequest.ExpiresIn,
+                invoiceRequest.SwapTo,
                 this.cancellationToken);
 
             Assert.NotNull(invoice);
@@ -130,6 +130,11 @@ public class AvailableMethodsTests
                     Assert.Equal(invoiceRequest.AcceptedAssets, invoice.AcceptedAssets);
                 }
             }
+
+            // ATTENTION! The swapTo property is not supported on the test API. Therefore, the test may fail.
+            // Confirmation in the official developer chat: https://t.me/CryptoPayDev/5548
+            // As of May 5, 2026, the test in the regular API passes perfectly.
+            Assert.Equal(invoiceRequest.SwapTo, invoice.SwapTo);
         }
         catch (RequestException requestException)
         {
@@ -263,7 +268,6 @@ public class AvailableMethodsTests
         {
             var invoice = await this.cryptoPayClient.CreateInvoiceAsync(
                 invoiceRequest.Amount,
-                invoiceRequest.SwapTo,
                 invoiceRequest.CurrencyType,
                 invoiceRequest.Asset,
                 invoiceRequest.Fiat,
@@ -276,6 +280,7 @@ public class AvailableMethodsTests
                 invoiceRequest.AllowComments!.Value,
                 invoiceRequest.AllowAnonymous!.Value,
                 invoiceRequest.ExpiresIn,
+                invoiceRequest.SwapTo,
                 this.cancellationToken);
 
             var deleted = await this.cryptoPayClient.DeleteInvoiceAsync(invoice.InvoiceId, this.cancellationToken);

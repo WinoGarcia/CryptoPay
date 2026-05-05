@@ -1,10 +1,10 @@
-﻿using System;
+﻿using CryptoPay.Exceptions;
+using CryptoPay.Requests;
+using CryptoPay.Types;
+using System;
 using System.Collections.Generic;
 using System.Threading;
 using System.Threading.Tasks;
-using CryptoPay.Exceptions;
-using CryptoPay.Requests;
-using CryptoPay.Types;
 
 namespace CryptoPay;
 
@@ -62,7 +62,6 @@ public static class CryptoPayExtensions
     public static async Task<Invoice> CreateInvoiceAsync(
         this ICryptoPayClient cryptoPayClientClient,
         double amount,
-        string swapTo = default,
         CurrencyTypes currencyType = CurrencyTypes.crypto,
         string asset = default,
         string fiats = default,
@@ -75,11 +74,11 @@ public static class CryptoPayExtensions
         bool allowComments = true,
         bool allowAnonymous = true,
         int expiresIn = 2678400,
+        string swapTo = default,
         CancellationToken cancellationToken = default) =>
         await cryptoPayClientClient
             .MakeRequestAsync(new CreateInvoiceRequest(
                     amount,
-                    swapTo,
                     currencyType,
                     asset,
                     fiats,
@@ -91,7 +90,8 @@ public static class CryptoPayExtensions
                     payload,
                     allowComments,
                     allowAnonymous,
-                    expiresIn),
+                    expiresIn,
+                    swapTo),
                 cancellationToken)
             .ConfigureAwait(false);
 
