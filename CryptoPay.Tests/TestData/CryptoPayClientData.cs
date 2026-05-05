@@ -4,7 +4,7 @@ using Xunit;
 
 namespace CryptoPay.Tests.TestData;
 
-public class CryptoPayClientData : TheoryData<HttpStatusCode?, Error?, string?, string?>
+public class CryptoPayClientData : TheoryData<HttpStatusCode, Error?, string?, string?>
 {
     public CryptoPayClientData()
     {

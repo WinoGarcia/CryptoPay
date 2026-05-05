@@ -30,15 +30,15 @@ public class AvailableMethodsTests
 
     #region Private Methods
 
-    private static void AssertException(RequestException requestException, HttpStatusCode statusCode, Error error)
+    private static void AssertException(RequestException requestException, HttpStatusCode statusCode, Error? error)
     {
         Assert.NotNull(requestException);
         Assert.Equal(statusCode, requestException.HttpStatusCode);
 
         var errorException = requestException.Error;
         Assert.NotNull(errorException);
-        Assert.Equal(error.Code, errorException.Code);
-        Assert.Equal(error.Name, errorException.Name);
+        Assert.Equal(error?.Code, errorException.Code);
+        Assert.Equal(error?.Name, errorException.Name);
     }
 
     #endregion
@@ -55,9 +55,9 @@ public class AvailableMethodsTests
     [ClassData(typeof(CryptoPayClientData))]
     public async Task AuthorizationAndGetMeTest(
         HttpStatusCode statusCode,
-        Error error,
-        string token,
-        string apiUrl)
+        Error? error,
+        string? token,
+        string? apiUrl)
     {
         try
         {
@@ -80,7 +80,7 @@ public class AvailableMethodsTests
 
     [Theory]
     [ClassData(typeof(CreateInvoiceData))]
-    public async Task CreateInvoiceTest(HttpStatusCode statusCode, Error error, CreateInvoiceRequest invoiceRequest)
+    public async Task CreateInvoiceTest(HttpStatusCode statusCode, Error? error, CreateInvoiceRequest invoiceRequest)
     {
         try
         {
@@ -174,7 +174,7 @@ public class AvailableMethodsTests
     /// </summary>
     [Theory]
     [ClassData(typeof(TransferData))]
-    public async Task TransferTest(HttpStatusCode statusCode, Error error, TransferRequest transferRequest)
+    public async Task TransferTest(HttpStatusCode statusCode, Error? error, TransferRequest transferRequest)
     {
         try
         {
@@ -205,7 +205,7 @@ public class AvailableMethodsTests
     /// </summary>
     [Theory]
     [ClassData(typeof(GetTransfersData))]
-    public async Task GetTransfersTest(HttpStatusCode statusCode, Error error, TransferRequest transferRequest)
+    public async Task GetTransfersTest(HttpStatusCode statusCode, Error? error, TransferRequest transferRequest)
     {
         try
         {
@@ -235,9 +235,9 @@ public class AvailableMethodsTests
     [ClassData(typeof(GetInvoicesData))]
     public async Task GetInvoicesTest(
         HttpStatusCode statusCode,
-        Error error,
-        IList<string> assets,
-        IList<long> invoiceIds,
+        Error? error,
+        IList<string>? assets,
+        IList<long>? invoiceIds,
         Statuses? status,
         int offset,
         int count)
@@ -262,7 +262,7 @@ public class AvailableMethodsTests
 
     [Theory]
     [ClassData(typeof(DeleteInvoicesData))]
-    public async Task DeleteInvoiceTest(HttpStatusCode statusCode, Error error, CreateInvoiceRequest invoiceRequest)
+    public async Task DeleteInvoiceTest(HttpStatusCode statusCode, Error? error, CreateInvoiceRequest invoiceRequest)
     {
         try
         {
@@ -296,7 +296,7 @@ public class AvailableMethodsTests
 
     [Theory]
     [ClassData(typeof(CreateCheckData))]
-    public async Task CreateCheckTest(HttpStatusCode statusCode, Error error, CreateCheckRequest createCheckRequest)
+    public async Task CreateCheckTest(HttpStatusCode statusCode, Error? error, CreateCheckRequest createCheckRequest)
     {
         try
         {
@@ -319,7 +319,7 @@ public class AvailableMethodsTests
 
     [Theory]
     [ClassData(typeof(CreateCheckData))]
-    public async Task DeleteCheckTest(HttpStatusCode statusCode, Error error, CreateCheckRequest createCheckRequest)
+    public async Task DeleteCheckTest(HttpStatusCode statusCode, Error? error, CreateCheckRequest createCheckRequest)
     {
         try
         {
@@ -342,7 +342,7 @@ public class AvailableMethodsTests
 
     [Theory]
     [ClassData(typeof(CreateCheckData))]
-    public async Task GetCheckTest(HttpStatusCode statusCode, Error error, CreateCheckRequest createCheckRequest)
+    public async Task GetCheckTest(HttpStatusCode statusCode, Error? error, CreateCheckRequest createCheckRequest)
     {
         try
         {
@@ -372,7 +372,7 @@ public class AvailableMethodsTests
 
     [Theory]
     [ClassData(typeof(GetStatsData))]
-    public async Task GetStatsTest(HttpStatusCode statusCode, Error error, GetStatsRequest getStatsRequest)
+    public async Task GetStatsTest(HttpStatusCode statusCode, Error? error, GetStatsRequest getStatsRequest)
     {
         try
         {
