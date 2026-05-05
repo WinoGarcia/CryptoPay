@@ -14,6 +14,20 @@ using Xunit;
 #pragma warning disable CS0618 // Type or member is obsolete
 namespace CryptoPay.Tests;
 
+/// <remarks>
+/// <para>Before running the tests, ensure you have set the actual values in:</para>
+/// <list type="bullet">
+/// <item><description><see cref="CryptoPayTestHelper.Token" /></description></item>
+/// <item><description><see cref="CryptoPayTestHelper.ApiUrl" /></description></item>
+/// <item><description><see cref="CryptoPayTestHelper.UserId" /></description></item>
+/// <item><description><see cref="CryptoPayTestHelper.UserUsername" /></description></item>
+/// </list>
+/// <para>
+/// For the following tests to pass: <see cref="TransferTest"/>, <see cref="GetTransfersTest"/>, 
+/// <see cref="CreateCheckTest"/>, <see cref="GetCheckTest"/>, and <see cref="DeleteCheckTest"/>, 
+/// you must have test <b>TON</b> and <b>USDT</b> coins available in your application wallet.
+/// </para>
+/// </remarks>
 public class AvailableMethodsTests
 {
     #region Public Fields
@@ -40,12 +54,6 @@ public class AvailableMethodsTests
     }
 
     #endregion
-
-    /// Enter your own actual values in
-    /// <see cref="CryptoPayTestHelper.Token" />
-    /// <see cref="CryptoPayTestHelper.ApiUrl" />
-    /// <see cref="CryptoPayTestHelper.UserId" />
-    /// For test <see cref="TransferTest"/>, you must have test TON coins in you application wallet.
 
     #region Tests
 
