@@ -18,7 +18,7 @@ public interface ITransfer
     /// <summary>
     /// Amount of the transfer.
     /// </summary>
-    public double Amount { get; set; }
+    public decimal Amount { get; set; }
 
     /// <summary>
     /// Optional. Comment for this transfer.

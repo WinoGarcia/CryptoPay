@@ -13,14 +13,14 @@ public class CreateInvoiceData : TheoryData<HttpStatusCode, Error?, CreateInvoic
             default,
             default,
             new CreateInvoiceRequest(
-                5.105,
+                5.105m,
                 asset: "TON")
         );
         this.Add(
             default,
             default,
             new CreateInvoiceRequest(
-                1.105,
+                1.105m,
                 CurrencyTypes.fiat,
                 fiat: "USD")
         );
@@ -28,7 +28,7 @@ public class CreateInvoiceData : TheoryData<HttpStatusCode, Error?, CreateInvoic
             default,
             default,
             new CreateInvoiceRequest(
-                5.105,
+                5.105m,
                 asset: "TON",
                 description: "description",
                 hiddenMessage: "hiddenMessage",
@@ -43,7 +43,7 @@ public class CreateInvoiceData : TheoryData<HttpStatusCode, Error?, CreateInvoic
             default,
             default,
             new CreateInvoiceRequest(
-                2.35,
+                2.35m,
                 CurrencyTypes.fiat,
                 default,
                 "EUR",
@@ -63,7 +63,7 @@ public class CreateInvoiceData : TheoryData<HttpStatusCode, Error?, CreateInvoic
             default,
             default,
             new CreateInvoiceRequest(
-                0.0234,
+                0.0234m,
                 CurrencyTypes.crypto,
                 "BNB",
                 default,
@@ -83,7 +83,7 @@ public class CreateInvoiceData : TheoryData<HttpStatusCode, Error?, CreateInvoic
             default,
             default,
             new CreateInvoiceRequest(
-                1.23,
+                1.23m,
                 CurrencyTypes.fiat,
                 default,
                 "EUR",
@@ -96,7 +96,7 @@ public class CreateInvoiceData : TheoryData<HttpStatusCode, Error?, CreateInvoic
             default,
             default,
             new CreateInvoiceRequest(
-                amount: 1.23,
+                amount: 1.23m,
                 currencyType: CurrencyTypes.crypto,
                 asset: "USDT",
                 swapTo: "TON")
@@ -106,7 +106,7 @@ public class CreateInvoiceData : TheoryData<HttpStatusCode, Error?, CreateInvoic
             HttpStatusCode.BadRequest,
             new Error(400, "PAID_BTN_URL_REQUIRED"),
             new CreateInvoiceRequest(
-                0.105,
+                0.105m,
                 asset: "TON",
                 paidBtnName: PaidButtonNames.callback)
         );
@@ -114,7 +114,7 @@ public class CreateInvoiceData : TheoryData<HttpStatusCode, Error?, CreateInvoic
             HttpStatusCode.BadRequest,
             new Error(400, "UNSUPPORTED_ASSET"),
             new CreateInvoiceRequest(
-                0.123,
+                0.123m,
                 asset: "FFF",
                 paidBtnName: PaidButtonNames.callback)
         );

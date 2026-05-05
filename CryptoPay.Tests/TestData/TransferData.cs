@@ -19,7 +19,7 @@ public class TransferData : TheoryData<HttpStatusCode, Error?, TransferRequest>
             new TransferRequest(
                 CryptoPayTestHelper.UserId,
                 "USDT",
-                1.5,
+                1.5m,
                 Guid.NewGuid().ToString(),
                 disableSendNotification: true)
         );
@@ -30,7 +30,7 @@ public class TransferData : TheoryData<HttpStatusCode, Error?, TransferRequest>
             new TransferRequest(
                 CryptoPayTestHelper.UserId,
                 "USDT",
-                1.5,
+                1.5m,
                 Guid.NewGuid().ToString(),
                 Guid.NewGuid().ToString(),
                 false)
@@ -42,7 +42,7 @@ public class TransferData : TheoryData<HttpStatusCode, Error?, TransferRequest>
             new TransferRequest(
                 CryptoPayTestHelper.UserId,
                 "TON",
-                1.02,
+                1.02m,
                 Guid.NewGuid().ToString(),
                 disableSendNotification: false)
         );

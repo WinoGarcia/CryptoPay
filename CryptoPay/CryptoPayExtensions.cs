@@ -61,7 +61,7 @@ public static class CryptoPayExtensions
     /// <exception cref="RequestException">This exception can be thrown.</exception>
     public static async Task<Invoice> CreateInvoiceAsync(
         this ICryptoPayClient cryptoPayClientClient,
-        double amount,
+        decimal amount,
         CurrencyTypes currencyType = CurrencyTypes.crypto,
         string asset = default,
         string fiats = default,
@@ -160,7 +160,7 @@ public static class CryptoPayExtensions
         this ICryptoPayClient cryptoPayClientClient,
         long userId,
         string asset,
-        double amount,
+        decimal amount,
         string spendId,
         string comment = default,
         bool? disableSendNotification = default,
@@ -274,7 +274,7 @@ public static class CryptoPayExtensions
     public static async Task<Check> CreateCheckAsync(
         this ICryptoPayClient cryptoPayClientClient,
         string asset,
-        double amount,
+        decimal amount,
         long? pinToUserId = default,
         string pinToUsername = default,
         CancellationToken cancellationToken = default) =>

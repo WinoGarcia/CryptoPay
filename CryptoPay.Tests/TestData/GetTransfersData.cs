@@ -19,7 +19,7 @@ public sealed class GetTransfersData : TheoryData<HttpStatusCode, Error?, Transf
             new TransferRequest(
                 CryptoPayTestHelper.UserId,
                 "USDT",
-                1.5,
+                1.5m,
                 Guid.NewGuid().ToString(),
                 disableSendNotification: true)
         );

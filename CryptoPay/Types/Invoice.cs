@@ -67,7 +67,7 @@ public sealed class Invoice : IInvoice
 
     /// <inheritdoc />
     [JsonRequired]
-    public double Amount { get; set; }
+    public decimal Amount { get; set; }
 
     /// <inheritdoc />
     public string SwapTo { get; set; }
@@ -158,7 +158,7 @@ public sealed class Invoice : IInvoice
     /// Optional. Amount of service fees charged when the invoice was paid.
     /// Available only if status is <see cref="Statuses.paid"/>.
     /// </summary>
-    public double FeeAmount { get; set; }
+    public decimal FeeAmount { get; set; }
 
     /// <summary>
     /// Optional. Fiat currency code. Available only if the value of the field <see cref="CurrencyType"/> is <see cref="CurrencyTypes.fiat"/>.

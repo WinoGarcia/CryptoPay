@@ -27,7 +27,7 @@ public sealed class Transfer : ITransfer
 
     /// <inheritdoc/>
     [JsonRequired]
-    public double Amount { get; set; }
+    public decimal Amount { get; set; }
 
     /// <summary>
     /// Status of the transfer, can be “completed”.

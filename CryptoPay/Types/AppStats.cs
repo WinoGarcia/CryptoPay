@@ -10,12 +10,12 @@ public sealed record AppStats
     /// <summary>
     /// Total volume of paid invoices in USD.
     /// </summary>
-    public double Volume { get; set; }
+    public decimal Volume { get; set; }
 
     /// <summary>
     /// Conversion of all created invoices.
     /// </summary>
-    public double Conversion { get; set; }
+    public decimal Conversion { get; set; }
 
     /// <summary>
     /// The unique number of users who have paid the invoice.

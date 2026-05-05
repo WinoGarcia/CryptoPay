@@ -45,7 +45,7 @@ public sealed class CreateInvoiceRequest
     /// Supported assets: "USDT", "TON", "TRX", "ETH", "SOL", "BTC", "LTC".
     /// </param>
     public CreateInvoiceRequest(
-        double amount,
+        decimal amount,
         CurrencyTypes currencyType = CurrencyTypes.crypto,
         string asset = default,
         string fiat = default,
@@ -89,7 +89,7 @@ public sealed class CreateInvoiceRequest
 
     /// <inheritdoc />
     [JsonRequired]
-    public double Amount { get; set; }
+    public decimal Amount { get; set; }
 
     /// <inheritdoc />
     public string SwapTo { get; set; }
