@@ -1,7 +1,7 @@
-﻿using System;
-using System.Net;
-using CryptoPay.Requests;
+﻿using CryptoPay.Requests;
 using CryptoPay.Types;
+using System;
+using System.Net;
 using Xunit;
 
 namespace CryptoPay.Tests.TestData;
@@ -18,8 +18,8 @@ public class TransferData : TheoryData<HttpStatusCode, Error?, TransferRequest>
             default,
             new TransferRequest(
                 CryptoPayTestHelper.UserId,
-                "TON",
-                0.5,
+                "USDT",
+                1.5,
                 Guid.NewGuid().ToString(),
                 disableSendNotification: true)
         );
@@ -29,8 +29,8 @@ public class TransferData : TheoryData<HttpStatusCode, Error?, TransferRequest>
             default,
             new TransferRequest(
                 CryptoPayTestHelper.UserId,
-                "TON",
-                0.5,
+                "USDT",
+                1.5,
                 Guid.NewGuid().ToString(),
                 Guid.NewGuid().ToString(),
                 false)
@@ -41,8 +41,8 @@ public class TransferData : TheoryData<HttpStatusCode, Error?, TransferRequest>
             default,
             new TransferRequest(
                 CryptoPayTestHelper.UserId,
-                "BNB",
-                0.0123,
+                "TON",
+                1.02,
                 Guid.NewGuid().ToString(),
                 disableSendNotification: false)
         );
@@ -57,8 +57,8 @@ public class TransferData : TheoryData<HttpStatusCode, Error?, TransferRequest>
                 Guid.NewGuid().ToString())
         );
         this.Add(
-            HttpStatusCode.InternalServerError,
-            new Error(500, "APP_ERROR"),
+            HttpStatusCode.BadRequest,
+            new Error(400, "AMOUNT_INVALID"),
             new TransferRequest(
                 CryptoPayTestHelper.UserId,
                 "Unknown",

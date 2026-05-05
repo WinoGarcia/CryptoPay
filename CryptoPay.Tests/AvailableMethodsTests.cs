@@ -189,6 +189,8 @@ public class AvailableMethodsTests
             Assert.Equal(transferRequest.UserId, transfer.UserId);
             Assert.Equal(transferRequest.Asset, transfer.Asset);
             Assert.Equal(transferRequest.Amount, transfer.Amount);
+            // ATTENTION! Comments can only be sent if your app balance is over $1,000.
+            // A comment may also be sent with anti-spam protection and the test will not pass.
             //Assert.Equal(transferRequest.Comment, transfer.Comment);
             Assert.Equal(transferRequest.DisableSendNotification, transferRequest.DisableSendNotification);
         }
