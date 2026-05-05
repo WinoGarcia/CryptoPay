@@ -1,6 +1,6 @@
-﻿using System.Net;
-using CryptoPay.Requests;
+﻿using CryptoPay.Requests;
 using CryptoPay.Types;
+using System.Net;
 using Xunit;
 
 namespace CryptoPay.Tests.TestData;
@@ -16,8 +16,8 @@ public sealed class CreateCheckData : TheoryData<HttpStatusCode, Error?, CreateC
             default,
             default,
             new CreateCheckRequest(
-                "BNB",
-                0.0123,
+                "USDT",
+                0.1,
                 default,
                 default));
 
@@ -25,8 +25,8 @@ public sealed class CreateCheckData : TheoryData<HttpStatusCode, Error?, CreateC
             default,
             default,
             new CreateCheckRequest(
-                "BNB",
-                0.0121,
+                "USDT",
+                0.1,
                 CryptoPayTestHelper.UserId,
                 default)
         );
@@ -35,11 +35,20 @@ public sealed class CreateCheckData : TheoryData<HttpStatusCode, Error?, CreateC
             default,
             default,
             new CreateCheckRequest(
-                "BNB",
-                0.0122,
+                "USDT",
+                0.1,
                 default,
-                "@userName")
+                CryptoPayTestHelper.UserUsername)
         );
+
+        this.Add(
+            HttpStatusCode.BadRequest,
+            new Error(400, "AMOUNT_TOO_SMALL"),
+            new CreateCheckRequest(
+                "USDT",
+                0.001,
+                default,
+                default));
 
         this.Add(
             HttpStatusCode.BadRequest,

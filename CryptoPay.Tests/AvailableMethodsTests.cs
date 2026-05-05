@@ -298,6 +298,8 @@ public class AvailableMethodsTests
     {
         try
         {
+            // ATTENTION! Before running tests, make sure you have USDT in your application balance
+            // and the createCheck method is enabled in the application security settings.
             var check = await this.cryptoPayClient.CreateCheckAsync(
                 createCheckRequest.Asset,
                 createCheckRequest.Amount,
