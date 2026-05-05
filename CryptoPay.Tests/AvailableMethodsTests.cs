@@ -33,12 +33,10 @@ public class AvailableMethodsTests
     private static void AssertException(RequestException requestException, HttpStatusCode statusCode, Error? error)
     {
         Assert.NotNull(requestException);
+
         Assert.Equal(statusCode, requestException.HttpStatusCode);
 
-        var errorException = requestException.Error;
-        Assert.NotNull(errorException);
-        Assert.Equal(error?.Code, errorException.Code);
-        Assert.Equal(error?.Name, errorException.Name);
+        Assert.Equal(requestException.Error, error);
     }
 
     #endregion

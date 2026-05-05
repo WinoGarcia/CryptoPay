@@ -1,5 +1,5 @@
-﻿using System.Net;
-using CryptoPay.Types;
+﻿using CryptoPay.Types;
+using System.Net;
 using Xunit;
 
 namespace CryptoPay.Tests.TestData;
@@ -16,8 +16,8 @@ public class CryptoPayClientData : TheoryData<HttpStatusCode, Error?, string?, s
             CryptoPayTestHelper.Token + "abc",
             CryptoPayTestHelper.ApiUrl);
         this.Add(
-            HttpStatusCode.MethodNotAllowed,
-            new Error(405, "METHOD_NOT_FOUND"),
+            HttpStatusCode.NotFound,
+            default,
             CryptoPayTestHelper.Token,
             CryptoPayTestHelper.ApiUrl + "abc");
     }

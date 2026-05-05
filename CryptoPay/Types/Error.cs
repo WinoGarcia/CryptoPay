@@ -1,4 +1,5 @@
-﻿using System.Text.Json.Serialization;
+﻿using System;
+using System.Text.Json.Serialization;
 
 namespace CryptoPay.Types;
 
@@ -32,4 +33,16 @@ public sealed class Error
     /// </summary>
     [JsonRequired]
     public string Name { get; set; }
+
+    /// <inheritdoc/>
+    public override bool Equals(object obj)
+    {
+        return obj is Error error && Code == error.Code && Name == error.Name;
+    }
+
+    /// <inheritdoc/>
+    public override int GetHashCode()
+    {
+        return HashCode.Combine(Code, Name);
+    }
 }
