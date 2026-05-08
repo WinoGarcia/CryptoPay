@@ -8,7 +8,7 @@ namespace CryptoPay;
 /// <summary>
 /// Crypto Pay is a payment system based on <a href="https://t.me/CryptoBot">CryptoBot</a>
 /// that allows you to accept payments in crypto and transfer coins to users using our API.
-/// Official documentation see <a href="https://help.crypt.bot/crypto-pay-api">here</a>
+/// Official documentation see <a href="https://help.send.tg/en/articles/10279948-crypto-pay-api">here</a>
 /// </summary>
 public interface ICryptoPayClient
 {

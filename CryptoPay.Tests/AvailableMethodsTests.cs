@@ -11,7 +11,6 @@ using System.Threading;
 using System.Threading.Tasks;
 using Xunit;
 
-#pragma warning disable CS0618 // Type or member is obsolete
 namespace CryptoPay.Tests;
 
 /// <remarks>
@@ -67,7 +66,11 @@ public class AvailableMethodsTests
     {
         try
         {
-            var localCryptoPayClient = new CryptoPayClient(token, apiUrl: apiUrl);
+            var localCryptoPayClient = new CryptoPayClient(new HttpClient()
+            {
+                BaseAddress = new Uri(apiUrl!),
+                DefaultRequestHeaders = { { "Crypto-Pay-API-Token", token } }
+            });
             var application = await localCryptoPayClient.GetMeAsync(this.cancellationToken);
 
             Assert.NotNull(application);
@@ -108,7 +111,6 @@ public class AvailableMethodsTests
                 this.cancellationToken);
 
             Assert.NotNull(invoice);
-            Assert.NotNull(invoice.PayUrl);
             Assert.NotNull(invoice.Hash);
             Assert.NotNull(invoice.MiniAppInvoiceUrl);
             Assert.NotNull(invoice.WebAppInvoiceUrl);

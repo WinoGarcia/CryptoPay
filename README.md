@@ -1,13 +1,13 @@
 ![CryptoPay](/header.png)
 [![package](https://img.shields.io/nuget/vpre/CryptoPay.svg?label=CryptoPay%20Package&style=flat-square)](https://www.nuget.org/packages/CryptoPay)
 [![NuGet downloads](https://img.shields.io/nuget/dt/CryptoPay.svg?label=Downloads&style=flat-square&color=orange)](https://www.nuget.org/packages/CryptoPay)
-[![Bot API Version](https://img.shields.io/badge/CryptoPay%20API-1.5%20(September%2011,%202024)-f36caf.svg?style=flat-square)](https://help.crypt.bot/crypto-pay-api)
-[![documentations](https://img.shields.io/badge/Documentations-Book-Green.svg?style=flat-square)](https://help.crypt.bot/crypto-pay-api)
+[![Bot API Version](https://img.shields.io/badge/CryptoPay%20API-1.5%20(September%2011,%202024)-f36caf.svg?style=flat-square)](https://help.send.tg/en/articles/10279948-crypto-pay-api)
+[![documentations](https://img.shields.io/badge/Documentations-Book-Green.svg?style=flat-square)](https://help.send.tg/en/articles/10279948-crypto-pay-api)
 # .NET Client for CryptoPay by [@CryptoBot](https://t.me/CryptoBot)
 
 **[Crypto Pay](https://t.me/CryptoBot/?start=pay)** is a payment system based on [@CryptoBot](https://t.me/CryptoBot), which allows you to accept payments in cryptocurrency using the API.
 
-This **.NET** library help you to work with **Crypto Pay** via [Crypto Pay API](https://help.crypt.bot/crypto-pay-api).
+This **.NET** library help you to work with **Crypto Pay** via [Crypto Pay API](https://help.send.tg/en/articles/10279948-crypto-pay-api).
 
 ## Install
 
@@ -42,7 +42,7 @@ testnet | [@CryptoTestnetBot](https://t.me/CryptoTestnetBot?start=pay) | `https:
 
 > All queries to the Crypto Pay API must be sent over **HTTPS**
 
-You can find all available methods in the [documentation](https://help.crypt.bot/crypto-pay-api).
+You can find all available methods in the [documentation](https://help.send.tg/en/articles/10279948-crypto-pay-api).
 
 Also, you can create invoice with supported [assets](#Assets) and [paid button names](#Paid-Button-Names):
 
@@ -92,4 +92,4 @@ public async Task<IActionResult> PostAsync(CancellationToken cancellationToken =
 }
 ```
 
-Explore all available methods from the [documentation](https://help.crypt.bot/crypto-pay-api).
+Explore all available methods from the [documentation](https://help.send.tg/en/articles/10279948-crypto-pay-api).

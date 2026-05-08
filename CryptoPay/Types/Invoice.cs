@@ -26,12 +26,6 @@ public sealed class Invoice : IInvoice
     public string Hash { get; set; }
 
     /// <summary>
-    /// URL should be presented to the user to pay the invoice.
-    /// </summary>
-    [Obsolete("The field PayUrl is now deprecated, use the new field BotInvoiceUrl instead")]
-    public string PayUrl { get; set; }
-
-    /// <summary>
     /// Date the invoice was created in ISO 8601 format.
     /// </summary>
     [JsonRequired]
@@ -130,18 +124,6 @@ public sealed class Invoice : IInvoice
 
     /// <inheritdoc />
     public IEnumerable<string> AcceptedAssets { get; set; }
-
-    /// <summary>
-    /// Optional. Amount of charged service fees.
-    /// </summary>
-    [Obsolete("The field Fee in the Webhook update payload is now deprecated, use the new field FeeAmount instead")]
-    public string Fee { get; set; }
-
-    /// <summary>
-    /// Optional. Price of the asset in USD at the time the invoice was paid.
-    /// </summary>
-    [Obsolete("The field UsdRate in the Webhook update payload is now deprecated, use the new field PaidUsdRate instead")]
-    public string UsdRate { get; set; }
 
     /// <summary>
     /// URL should be provided to the user to pay the invoice.
