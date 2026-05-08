@@ -1,6 +1,6 @@
-﻿using System.Text.Json.Serialization;
-using CryptoPay.Requests.Base;
+﻿using CryptoPay.Requests.Base;
 using CryptoPay.Types;
+using System.Text.Json.Serialization;
 
 namespace CryptoPay.Requests;
 
@@ -29,7 +29,7 @@ public sealed class TransferRequest
     public TransferRequest(
         long userId,
         string asset,
-        double amount,
+        decimal amount,
         string spendId,
         string comment = default,
         bool? disableSendNotification = default)
@@ -74,7 +74,7 @@ public sealed class TransferRequest
 
     /// <inheritdoc />
     [JsonRequired]
-    public double Amount { get; set; }
+    public decimal Amount { get; set; }
 
     /// <inheritdoc />
     public string Comment { get; set; }

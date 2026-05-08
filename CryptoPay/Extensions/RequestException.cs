@@ -1,7 +1,7 @@
-﻿using System;
+﻿using CryptoPay.Types;
+using System;
 using System.Net;
 using System.Runtime.CompilerServices;
-using CryptoPay.Types;
 
 namespace CryptoPay.Exceptions;
 
@@ -71,7 +71,17 @@ public sealed class RequestException : Exception
             return message;
         }
 
-        var errorMessage = $"Code: {error.Code} Name: {error.Name}";
+        string errorMessage;
+
+        if (string.IsNullOrWhiteSpace(error.Message))
+        {
+            errorMessage = $"Code: {error.Code} Name: {error.Name}";
+        }
+        else
+        {
+            errorMessage = $"Code: {error.Code} Name: {error.Name} Message: {error.Message}";
+        }
+
         return message is null
             ? errorMessage
             : $"{message}{Environment.NewLine}{errorMessage}";

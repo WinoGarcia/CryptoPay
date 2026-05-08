@@ -14,6 +14,20 @@ using Xunit;
 #pragma warning disable CS0618 // Type or member is obsolete
 namespace CryptoPay.Tests;
 
+/// <remarks>
+/// <para>Before running the tests, ensure you have set the actual values in:</para>
+/// <list type="bullet">
+/// <item><description><see cref="CryptoPayTestHelper.Token" /></description></item>
+/// <item><description><see cref="CryptoPayTestHelper.ApiUrl" /></description></item>
+/// <item><description><see cref="CryptoPayTestHelper.UserId" /></description></item>
+/// <item><description><see cref="CryptoPayTestHelper.UserUsername" /></description></item>
+/// </list>
+/// <para>
+/// For the following tests to pass: <see cref="TransferTest"/>, <see cref="GetTransfersTest"/>, 
+/// <see cref="CreateCheckTest"/>, <see cref="GetCheckTest"/>, and <see cref="DeleteCheckTest"/>, 
+/// you must have test <b>TON</b> and <b>USDT</b> coins available in your application wallet.
+/// </para>
+/// </remarks>
 public class AvailableMethodsTests
 {
     #region Public Fields
@@ -30,24 +44,16 @@ public class AvailableMethodsTests
 
     #region Private Methods
 
-    private static void AssertException(RequestException requestException, HttpStatusCode statusCode, Error error)
+    private static void AssertException(RequestException requestException, HttpStatusCode statusCode, Error? error)
     {
         Assert.NotNull(requestException);
+
         Assert.Equal(statusCode, requestException.HttpStatusCode);
 
-        var errorException = requestException.Error;
-        Assert.NotNull(errorException);
-        Assert.Equal(error.Code, errorException.Code);
-        Assert.Equal(error.Name, errorException.Name);
+        Assert.Equal(requestException.Error, error);
     }
 
     #endregion
-
-    /// Enter your own actual values in
-    /// <see cref="CryptoPayTestHelper.Token" />
-    /// <see cref="CryptoPayTestHelper.ApiUrl" />
-    /// <see cref="CryptoPayTestHelper.UserId" />
-    /// For test <see cref="TransferTest"/>, you must have test TON coins in you application wallet.
 
     #region Tests
 
@@ -55,9 +61,9 @@ public class AvailableMethodsTests
     [ClassData(typeof(CryptoPayClientData))]
     public async Task AuthorizationAndGetMeTest(
         HttpStatusCode statusCode,
-        Error error,
-        string token,
-        string apiUrl)
+        Error? error,
+        string? token,
+        string? apiUrl)
     {
         try
         {
@@ -80,7 +86,7 @@ public class AvailableMethodsTests
 
     [Theory]
     [ClassData(typeof(CreateInvoiceData))]
-    public async Task CreateInvoiceTest(HttpStatusCode statusCode, Error error, CreateInvoiceRequest invoiceRequest)
+    public async Task CreateInvoiceTest(HttpStatusCode statusCode, Error? error, CreateInvoiceRequest invoiceRequest)
     {
         try
         {
@@ -174,7 +180,7 @@ public class AvailableMethodsTests
     /// </summary>
     [Theory]
     [ClassData(typeof(TransferData))]
-    public async Task TransferTest(HttpStatusCode statusCode, Error error, TransferRequest transferRequest)
+    public async Task TransferTest(HttpStatusCode statusCode, Error? error, TransferRequest transferRequest)
     {
         try
         {
@@ -191,6 +197,8 @@ public class AvailableMethodsTests
             Assert.Equal(transferRequest.UserId, transfer.UserId);
             Assert.Equal(transferRequest.Asset, transfer.Asset);
             Assert.Equal(transferRequest.Amount, transfer.Amount);
+            // ATTENTION! Comments can only be sent if your app balance is over $1,000.
+            // A comment may also be sent with anti-spam protection and the test will not pass.
             //Assert.Equal(transferRequest.Comment, transfer.Comment);
             Assert.Equal(transferRequest.DisableSendNotification, transferRequest.DisableSendNotification);
         }
@@ -205,7 +213,7 @@ public class AvailableMethodsTests
     /// </summary>
     [Theory]
     [ClassData(typeof(GetTransfersData))]
-    public async Task GetTransfersTest(HttpStatusCode statusCode, Error error, TransferRequest transferRequest)
+    public async Task GetTransfersTest(HttpStatusCode statusCode, Error? error, TransferRequest transferRequest)
     {
         try
         {
@@ -235,9 +243,9 @@ public class AvailableMethodsTests
     [ClassData(typeof(GetInvoicesData))]
     public async Task GetInvoicesTest(
         HttpStatusCode statusCode,
-        Error error,
-        IList<string> assets,
-        IList<long> invoiceIds,
+        Error? error,
+        IList<string>? assets,
+        IList<long>? invoiceIds,
         Statuses? status,
         int offset,
         int count)
@@ -262,7 +270,7 @@ public class AvailableMethodsTests
 
     [Theory]
     [ClassData(typeof(DeleteInvoicesData))]
-    public async Task DeleteInvoiceTest(HttpStatusCode statusCode, Error error, CreateInvoiceRequest invoiceRequest)
+    public async Task DeleteInvoiceTest(HttpStatusCode statusCode, Error? error, CreateInvoiceRequest invoiceRequest)
     {
         try
         {
@@ -296,10 +304,12 @@ public class AvailableMethodsTests
 
     [Theory]
     [ClassData(typeof(CreateCheckData))]
-    public async Task CreateCheckTest(HttpStatusCode statusCode, Error error, CreateCheckRequest createCheckRequest)
+    public async Task CreateCheckTest(HttpStatusCode statusCode, Error? error, CreateCheckRequest createCheckRequest)
     {
         try
         {
+            // ATTENTION! Before running tests, make sure you have USDT in your application balance
+            // and the createCheck method is enabled in the application security settings.
             var check = await this.cryptoPayClient.CreateCheckAsync(
                 createCheckRequest.Asset,
                 createCheckRequest.Amount,
@@ -319,7 +329,7 @@ public class AvailableMethodsTests
 
     [Theory]
     [ClassData(typeof(CreateCheckData))]
-    public async Task DeleteCheckTest(HttpStatusCode statusCode, Error error, CreateCheckRequest createCheckRequest)
+    public async Task DeleteCheckTest(HttpStatusCode statusCode, Error? error, CreateCheckRequest createCheckRequest)
     {
         try
         {
@@ -342,7 +352,7 @@ public class AvailableMethodsTests
 
     [Theory]
     [ClassData(typeof(CreateCheckData))]
-    public async Task GetCheckTest(HttpStatusCode statusCode, Error error, CreateCheckRequest createCheckRequest)
+    public async Task GetCheckTest(HttpStatusCode statusCode, Error? error, CreateCheckRequest createCheckRequest)
     {
         try
         {
@@ -372,7 +382,7 @@ public class AvailableMethodsTests
 
     [Theory]
     [ClassData(typeof(GetStatsData))]
-    public async Task GetStatsTest(HttpStatusCode statusCode, Error error, GetStatsRequest getStatsRequest)
+    public async Task GetStatsTest(HttpStatusCode statusCode, Error? error, GetStatsRequest getStatsRequest)
     {
         try
         {

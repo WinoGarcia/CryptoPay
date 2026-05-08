@@ -17,7 +17,7 @@ public sealed class Balance
     /// Number of available coins.
     /// </summary>
     [JsonRequired]
-    public double Available { get; set; }
+    public decimal Available { get; set; }
 
     /// <summary>
     /// Unavailable amount currently is on hold in float.

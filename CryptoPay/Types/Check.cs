@@ -32,7 +32,7 @@ public sealed class Check
     /// Amount of the check in float.
     /// </summary>
     [JsonRequired]
-    public double Amount { get; set; }
+    public decimal Amount { get; set; }
 
     /// <summary>
     /// URL should be provided to the user to activate the check.

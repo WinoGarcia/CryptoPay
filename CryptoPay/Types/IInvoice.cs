@@ -20,7 +20,7 @@ public interface IInvoice
     /// <summary>
     /// Amount of the invoice.
     /// </summary>
-    public double Amount { get; set; }
+    public decimal Amount { get; set; }
 
     /// <summary>
     /// Optional. The asset that will be attempted to be swapped into after the user makes a payment (the swap is not guaranteed).

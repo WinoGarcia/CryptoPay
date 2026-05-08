@@ -1,6 +1,6 @@
-﻿using System.Net;
-using CryptoPay.Requests;
+﻿using CryptoPay.Requests;
 using CryptoPay.Types;
+using System.Net;
 using Xunit;
 
 namespace CryptoPay.Tests.TestData;
@@ -13,7 +13,7 @@ public sealed class DeleteInvoicesData : TheoryData<HttpStatusCode, Error?, Crea
             default,
             default,
             new CreateInvoiceRequest(
-                5.105,
+                5.105m,
                 asset: "TON",
                 description: "description",
                 hiddenMessage: "hiddenMessage",
@@ -28,7 +28,7 @@ public sealed class DeleteInvoicesData : TheoryData<HttpStatusCode, Error?, Crea
             default,
             default,
             new CreateInvoiceRequest(
-                2.35,
+                2.35m,
                 currencyType: CurrencyTypes.fiat,
                 asset: default,
                 fiat: "EUR",

@@ -1,6 +1,6 @@
-﻿using System.Net;
-using CryptoPay.Requests;
+﻿using CryptoPay.Requests;
 using CryptoPay.Types;
+using System.Net;
 using Xunit;
 
 namespace CryptoPay.Tests.TestData;
@@ -16,8 +16,8 @@ public sealed class CreateCheckData : TheoryData<HttpStatusCode, Error?, CreateC
             default,
             default,
             new CreateCheckRequest(
-                "BNB",
-                0.0123,
+                "USDT",
+                0.1m,
                 default,
                 default));
 
@@ -25,8 +25,8 @@ public sealed class CreateCheckData : TheoryData<HttpStatusCode, Error?, CreateC
             default,
             default,
             new CreateCheckRequest(
-                "BNB",
-                0.0121,
+                "USDT",
+                0.1m,
                 CryptoPayTestHelper.UserId,
                 default)
         );
@@ -35,18 +35,27 @@ public sealed class CreateCheckData : TheoryData<HttpStatusCode, Error?, CreateC
             default,
             default,
             new CreateCheckRequest(
-                "BNB",
-                0.0122,
+                "USDT",
+                0.1m,
                 default,
-                "@userName")
+                CryptoPayTestHelper.UserUsername)
         );
+
+        this.Add(
+            HttpStatusCode.BadRequest,
+            new Error(400, "AMOUNT_TOO_SMALL"),
+            new CreateCheckRequest(
+                "USDT",
+                0.001m,
+                default,
+                default));
 
         this.Add(
             HttpStatusCode.BadRequest,
             new Error(400, "NOT_ENOUGH_COINS"),
             new CreateCheckRequest(
                 "TON",
-                100.2345,
+                100.2345m,
                 default,
                 default));
 
@@ -55,7 +64,7 @@ public sealed class CreateCheckData : TheoryData<HttpStatusCode, Error?, CreateC
             new Error(400, "ASSET_INVALID"),
             new CreateCheckRequest(
                 "FFF",
-                0.0123,
+                0.0123m,
                 default,
                 default));
     }

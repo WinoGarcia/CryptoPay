@@ -1,6 +1,6 @@
-﻿using System.Text.Json.Serialization;
-using CryptoPay.Requests.Base;
+﻿using CryptoPay.Requests.Base;
 using CryptoPay.Types;
+using System.Text.Json.Serialization;
 
 namespace CryptoPay.Requests;
 
@@ -22,7 +22,7 @@ public sealed class CreateCheckRequest : ParameterlessRequest<Check>
     /// <param name="pinToUsername">Optional. A user with the specified username will be able to activate the check.</param>
     public CreateCheckRequest(
         string asset,
-        double amount,
+        decimal amount,
         long? pinToUserId,
         string pinToUsername)
         : base("createCheck")
@@ -47,7 +47,7 @@ public sealed class CreateCheckRequest : ParameterlessRequest<Check>
     /// Amount of the invoice in float. For example: 125.50
     /// </summary>
     [JsonRequired]
-    public double Amount { get; set; }
+    public decimal Amount { get; set; }
     
     /// <summary>
     /// Optional. A user with the specified username will be able to activate the check.

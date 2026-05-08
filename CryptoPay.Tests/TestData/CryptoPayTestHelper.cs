@@ -16,4 +16,9 @@ public static class CryptoPayTestHelper
     /// Real UserId.
     /// </summary>
     public static long UserId = default;
+
+    /// <summary>
+    /// Real Username.
+    /// </summary>
+    public static string UserUsername = "";
 }

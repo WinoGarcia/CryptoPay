@@ -1,8 +1,20 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 18
+VisualStudioVersion = 18.5.11723.231 stable
+MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CryptoPay", "CryptoPay\CryptoPay.csproj", "{482A7B0E-EA2D-4D7B-867A-D1BEA03C5304}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CryptoPay.Tests", "CryptoPay.Tests\CryptoPay.Tests.csproj", "{D909A31C-9D48-47CD-8B85-F7C2307C4B98}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{3E7112C1-76EA-4BE6-9AC2-158710ED7D0D}"
+	ProjectSection(SolutionItems) = preProject
+		.gitignore = .gitignore
+		header.png = header.png
+		LICENSE = LICENSE
+		package-icon.png = package-icon.png
+		README.md = README.md
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -18,5 +30,11 @@ Global
 		{D909A31C-9D48-47CD-8B85-F7C2307C4B98}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{D909A31C-9D48-47CD-8B85-F7C2307C4B98}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{D909A31C-9D48-47CD-8B85-F7C2307C4B98}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {7110EB4C-3EF1-4100-9C73-91190DE1E6A9}
 	EndGlobalSection
 EndGlobal

@@ -1,7 +1,7 @@
-﻿using System;
-using System.Net;
-using CryptoPay.Requests;
+﻿using CryptoPay.Requests;
 using CryptoPay.Types;
+using System;
+using System.Net;
 using Xunit;
 
 namespace CryptoPay.Tests.TestData;
@@ -18,8 +18,8 @@ public sealed class GetTransfersData : TheoryData<HttpStatusCode, Error?, Transf
             default,
             new TransferRequest(
                 CryptoPayTestHelper.UserId,
-                "BNB",
-                0.0123,
+                "USDT",
+                1.5m,
                 Guid.NewGuid().ToString(),
                 disableSendNotification: true)
         );

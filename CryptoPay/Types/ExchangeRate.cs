@@ -41,5 +41,5 @@ public sealed class ExchangeRate
     /// Exchange rate.
     /// </summary>
     [JsonRequired]
-    public double Rate { get; set; }
+    public decimal Rate { get; set; }
 }
